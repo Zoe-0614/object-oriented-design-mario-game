@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.positions.Location;
 
 /**
  * Class representing the Player.
@@ -13,6 +14,12 @@ import edu.monash.fit2099.engine.displays.Menu;
 public class Player extends Actor  {
 
 	private final Menu menu = new Menu();
+	private int balance;
+
+	//Setter
+	public void setBalance(int balance) { this.balance = balance; }
+	//Getter
+	public int getBalance() {return balance; }
 
 	/**
 	 * Constructor.
@@ -31,7 +38,10 @@ public class Player extends Actor  {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-
+		String hp = printHp();
+		Location actorLocation = map.locationOf(this);
+		System.out.println(name+ hp +" at "+"("+ actorLocation.x()+","+actorLocation.y()+")");
+		System.out.println("Wallet:"+getBalance());
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
@@ -40,4 +50,6 @@ public class Player extends Actor  {
 	public char getDisplayChar(){
 		return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar()): super.getDisplayChar();
 	}
+
+
 }
