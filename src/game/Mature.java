@@ -26,7 +26,7 @@ public class Mature extends Tree{
             }
         }
         //Create new sprout
-        if (age % 1 ==0) {
+        if (age % 5 ==0) {
             //Get the map's max x and y, generate random value between them and set that to sprout
             boolean isTree = true;
             int dirtCount = countDirt(location);
