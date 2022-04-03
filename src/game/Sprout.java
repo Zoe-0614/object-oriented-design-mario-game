@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Sprout extends Tree{
     public Sprout(){
-        super('+');
+        super('+',0);
 
     }
     @Override
