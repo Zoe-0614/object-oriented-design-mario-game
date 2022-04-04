@@ -5,62 +5,47 @@ Loh Zhun Guan 	32245327	zloh0009@student.monash.edu
 
 Task: Trees
 Person In Charge: Loh Zhun Guan
-Deadlines: 5th April 2022
+Deadlines: 7th April 2022
 
 Task: Jump
 Person In Charge: Chua Shin Herh
-Deadlines: 5th April 2022
+Deadlines: 7th April 2022
 
-Task: Enemies
+Task: Req 3: Create Enemies UML Class diagram and implement AttackAction UML Interaction diagram
 Person In Charge: Zoe Low Pei Ee
-Deadlines: 5th April 2022
+Deadlines: 7th April 2022
 
-Task: Magical Items
+Task: Req 4: Create Magical Item UML Class diagram and ConsumeAction UML Interaction diagram
 Person In Charge: Zoe Low Pei Ee
-Deadlines: 5th April 2022
+Deadlines: 7th April 2022
 
 Task: Trading
 Person In Charge: Chua Shin Herh
-Deadlines: 5th April 2022
+Deadlines: 7th April 2022
 
 Task: Monologue
 Person In Charge: Loh Zhun Guan
-Deadlines: 5th April 2022
+Deadlines: 7th April 2022
 
-Task: Reset Game
+Task: Req 7: Reset Game UML class diagram Interaction diagram
 Person In Charge: Collaborative
-Deadlines: 5th April 2022
+Deadlines: 7th April 2022
 
-Task: UML class diagram
+Task: Design rationale of each REQ
 Person In Charge: Collaborative
-Deadlines: 5th April 2022
-
-Task: UML Interaction diagram
-Person In Charge: Collaborative
-Deadlines: 5th April 2022
-
-Task: Design documentation
-Person In Charge: Loh Zhun Guan, Chua Shin Herh
-Deadlines: 5th April 2022
-
-Task: Design rationale
-Person In Charge: Zoe Low Pei Ee
-Deadlines: 5th April 2022
+Deadlines: 7th April 2022
 
 Task: Review and testing
 Person In Charge: Collaborative
-Deadlines: 6th April 2022
+Deadlines: 8th April 2022
 
 1. Each task, when completed, is to be pushed onto the repository.
 2. Work will be pushed to the git repository frequently to ensure each member gets the latest update of the work, push partially completed tasks with commit message “TO BE COMPLETED”.
 3. Diagrams are required to be pushed after any changes to ensure consistency. Diagrams will be made through lucidchart.com.
-4. All work to be done before the deadline, no work will be done later than the 8th of April.
-
-Change Log (if any):
+4. All work to be done before the deadline, no work will be done later than the 10th of April.
 
 
 
 If the member agrees to terms, please sign your name, date, with “I accept this WBA”.
- - Zoe Low Pei Ee, 27th March 2022, I accept this WBA.
- - Chua Shin Herh, 27th March 2022, I accept this WBA.
- - Loh Zhun Guan, 27th March 2022, I accept this WBA.
+ - Zoe Low Pei Ee, 4th April 2022, I accept this WBA.
+
