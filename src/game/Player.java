@@ -14,12 +14,6 @@ import edu.monash.fit2099.engine.positions.Location;
 public class Player extends Actor  {
 
 	private final Menu menu = new Menu();
-	private int balance;
-
-	//Setter
-	public void setBalance(int balance) { this.balance = balance; }
-	//Getter
-	public int getBalance() {return balance; }
 
 	/**
 	 * Constructor.
@@ -31,6 +25,7 @@ public class Player extends Actor  {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		Wallet.addActor(this);
 	}
 
 	@Override
@@ -40,8 +35,10 @@ public class Player extends Actor  {
 			return lastAction.getNextAction();
 		String hp = printHp();
 		Location actorLocation = map.locationOf(this);
+		//Player Status
 		System.out.println(name+ hp +" at "+"("+ actorLocation.x()+","+actorLocation.y()+")");
-		System.out.println("Wallet:"+getBalance());
+		//Wallet
+		System.out.println("Wallet:"+Wallet.getBalance(this));
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}

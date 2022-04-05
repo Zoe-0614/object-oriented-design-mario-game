@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
+
+
 /**
  * Action to allow items to be picked up.
  */
@@ -21,7 +23,7 @@ public class PickUpCoinAction extends Action {
     }
 
     /**
-     * Add the item to the actor's inventory.
+     * Add the coin to the actor's inventory.
      *
      * @see Action#execute(Actor, GameMap)
      * @param actor The actor performing the action.
@@ -30,12 +32,11 @@ public class PickUpCoinAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        //Create a player object by casting Actor to be Player
-        Player player = (Player) actor;
+        //Removes coin from the ground
         map.locationOf(actor).removeItem(coin);
-        //Increase the balance of the player, need to use player object through actor
-        player.setBalance(player.getBalance()+20);
-        return menuDescription(player);
+        //Use the wallet class to add money
+        Wallet.addMoney(actor,20);
+        return menuDescription(actor);
     }
 
     /**

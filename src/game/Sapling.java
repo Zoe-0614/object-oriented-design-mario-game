@@ -16,9 +16,9 @@ public class Sapling extends Tree{
         int prob = random.nextInt(100);
         //Sapling
         //Drop $20
-//        if (prob < 10){
-//            location.addItem(new Coin());
-//        }
+        if (prob < 10){
+            location.addItem(new Coin());
+        }
     }
 
 
