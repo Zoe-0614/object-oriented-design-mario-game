@@ -35,7 +35,7 @@ public class PickUpCoinAction extends Action {
         //Removes coin from the ground
         map.locationOf(actor).removeItem(coin);
         //Use the wallet class to add money
-        Wallet.addMoney(actor,20);
+        Wallet.addMoney(actor, coin.getValue());
         return menuDescription(actor);
     }
 
@@ -48,6 +48,6 @@ public class PickUpCoinAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " picks up the " + coin;
+        return actor + " picks up the " + coin + " ($" + coin.getValue() + ")";
     }
 }

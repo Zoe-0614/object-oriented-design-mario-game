@@ -1,6 +1,7 @@
 package game;
 
 
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 
@@ -16,6 +17,11 @@ abstract public class Tree extends Ground {
     public Tree(char displayChar,int age) {
         super(displayChar);
         this.age=(age);
+    }
+
+    @Override
+    public boolean canActorEnter(Actor actor) {
+        return false;
     }
 
     //For the trees to grow
