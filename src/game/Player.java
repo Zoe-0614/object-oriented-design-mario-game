@@ -36,9 +36,9 @@ public class Player extends Actor  {
 		String hp = printHp();
 		Location actorLocation = map.locationOf(this);
 		//Player Status
-		System.out.println(name+ hp +" at "+"("+ actorLocation.x()+","+actorLocation.y()+")");
+		System.out.println(name + hp +" at " + "(" + actorLocation.x() + "," + actorLocation.y() + ")");
 		//Wallet
-		System.out.println("Wallet:"+Wallet.getBalance(this));
+		System.out.println("Wallet: $"+ Wallet.getBalance(this));
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
