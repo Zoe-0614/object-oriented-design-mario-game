@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.positions.Location;
 
 /**
  * Class representing the Player.
@@ -24,6 +25,7 @@ public class Player extends Actor  {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		Wallet.addActor(this);
 	}
 
 	@Override
@@ -31,7 +33,12 @@ public class Player extends Actor  {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-
+		String hp = printHp();
+		Location actorLocation = map.locationOf(this);
+		//Player Status
+		System.out.println(name+ hp +" at "+"("+ actorLocation.x()+","+actorLocation.y()+")");
+		//Wallet
+		System.out.println("Wallet:"+Wallet.getBalance(this));
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
@@ -40,4 +47,6 @@ public class Player extends Actor  {
 	public char getDisplayChar(){
 		return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar()): super.getDisplayChar();
 	}
+
+
 }
