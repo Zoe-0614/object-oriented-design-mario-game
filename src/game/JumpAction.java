@@ -11,16 +11,15 @@ import java.util.Random;
 public class JumpAction extends Action {
     Location locationToJump;
     String direction;
-    Ground ground;
 
     public JumpAction(Location location, String direction) {
         this.locationToJump = location;
         this.direction = direction;
-        this.ground = locationToJump.getGround();
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
+        Ground ground = locationToJump.getGround();
         boolean isSuccess = false;
         int damage = 0;
         if (actor.hasCapability(Status.TALL)) {
@@ -67,7 +66,7 @@ public class JumpAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " jumps to the " + direction + " " + ground.getClass().getSimpleName() +
+        return actor + " jumps to the " + direction + " " + locationToJump.getGround().getClass().getSimpleName() +
                 " at (" + locationToJump.x() + ", " + locationToJump.y() + ")";
     }
 }
