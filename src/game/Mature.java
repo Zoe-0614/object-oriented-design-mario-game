@@ -72,9 +72,9 @@ public class Mature extends Tree{
             }
         }
 //        20% to wither and die(become dirt)
-//        if (prob < 20){
-//            location.setGround(new Dirt());
-//        }
+        if (prob < 20){
+            location.setGround(new Dirt());
+        }
 
     }
     //Calculate the dirtCount in the surrounding area
