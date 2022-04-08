@@ -45,6 +45,7 @@ public class ResetManager {
      * By doing this way, it will avoid using `instanceof` all over the place.
      */
     public void run(){
+
     }
 
     /**

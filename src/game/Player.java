@@ -25,7 +25,12 @@ public class Player extends Actor  {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		this.addCapability(Status.ISPLAYER);
+		//test for talking to toad
+		this.addCapability(Status.INVINCIBLE);
+		addItemToInventory(new Wrench());
 		Wallet.addActor(this);
+
 	}
 
 	@Override
@@ -35,6 +40,7 @@ public class Player extends Actor  {
 			return lastAction.getNextAction();
 		String hp = printHp();
 		Location actorLocation = map.locationOf(this);
+
 		//Player Status
 		System.out.println(name+ hp +" at "+"("+ actorLocation.x()+","+actorLocation.y()+")");
 		//Wallet
