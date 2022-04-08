@@ -11,9 +11,11 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public class Mature extends Tree{
+    private int damage;
+
     public Mature(){
         super('T',20);
-
+        this.damage = 30;
     }
 
     @Override
@@ -112,7 +114,29 @@ public class Mature extends Tree{
             return new ActionList();
         }
         ActionList actionList = new ActionList();
-        actionList.add(new JumpAction(location, direction));
+        actionList.add(new JumpAction(this, location, direction));
         return actionList;
+    }
+
+    @Override
+    public boolean jump(Actor actor, Location locationToJump, GameMap map) {
+        int jumpChance = new Random().nextInt(100);
+        if (!(jumpChance < 30)) {
+            map.moveActor(actor, locationToJump);
+            return true;
+        } else {
+            actor.hurt(damage);
+            return false;
+        }
+    }
+
+    @Override
+    public String getName() {
+        return "Mature";
+    }
+
+    @Override
+    public int getDamage() {
+        return damage;
     }
 }
