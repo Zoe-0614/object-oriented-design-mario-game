@@ -10,10 +10,12 @@ import java.util.Random;
 
 public class Wall extends Ground implements JumpCapable {
 	private int damage;
+	private int chance;
 
 	public Wall() {
 		super('#');
 		this.damage = 20;
+		this.chance = 80;
 	}
 	
 	@Override
@@ -36,18 +38,6 @@ public class Wall extends Ground implements JumpCapable {
 	}
 
 	@Override
-	public boolean jump(Actor actor, Location locationToJump, GameMap map) {
-		int jumpChance = new Random().nextInt(100);
-		if (!(jumpChance < 20)) {
-			map.moveActor(actor, locationToJump);
-			return true;
-		} else {
-			actor.hurt(damage);
-			return false;
-		}
-	}
-
-	@Override
 	public String getName() {
 		return "Wall";
 	}
@@ -55,5 +45,10 @@ public class Wall extends Ground implements JumpCapable {
 	@Override
 	public int getDamage() {
 		return damage;
+	}
+
+	@Override
+	public int getChance() {
+		return chance;
 	}
 }

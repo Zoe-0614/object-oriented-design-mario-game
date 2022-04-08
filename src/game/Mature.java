@@ -12,10 +12,12 @@ import static java.lang.Math.min;
 
 public class Mature extends Tree{
     private int damage;
+    private int chance;
 
     public Mature(){
         super('T',20);
         this.damage = 30;
+        this.chance = 70;
     }
 
     @Override
@@ -138,5 +140,10 @@ public class Mature extends Tree{
     @Override
     public int getDamage() {
         return damage;
+    }
+
+    @Override
+    public int getChance() {
+        return chance;
     }
 }

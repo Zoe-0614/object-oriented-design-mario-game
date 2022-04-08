@@ -9,10 +9,12 @@ import java.util.Random;
 
 public class Sprout extends Tree{
     private int damage;
+    private int chance;
 
     public Sprout(){
         super('+',0);
         this.damage = 10;
+        this.chance = 90;
     }
     @Override
     protected void drop(Location location){
@@ -37,18 +39,6 @@ public class Sprout extends Tree{
     }
 
     @Override
-    public boolean jump(Actor actor, Location locationToJump, GameMap map) {
-        int jumpChance = new Random().nextInt(100);
-        if (!(jumpChance < 10)) {
-            map.moveActor(actor, locationToJump);
-            return true;
-        } else {
-            actor.hurt(damage);
-            return false;
-        }
-    }
-
-    @Override
     public String getName() {
         return "Sprout";
     }
@@ -56,5 +46,10 @@ public class Sprout extends Tree{
     @Override
     public int getDamage() {
         return damage;
+    }
+
+    @Override
+    public int getChance() {
+        return chance;
     }
 }

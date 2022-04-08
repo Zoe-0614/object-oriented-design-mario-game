@@ -9,10 +9,12 @@ import java.util.Random;
 
 public class Sapling extends Tree{
     private int damage;
+    private int chance;
 
     public Sapling(){
         super('t',10);
         this.damage = 20;
+        this.chance = 80;
     }
     @Override
     protected void drop(Location location){
@@ -36,18 +38,6 @@ public class Sapling extends Tree{
     }
 
     @Override
-    public boolean jump(Actor actor, Location locationToJump, GameMap map) {
-        int jumpChance = new Random().nextInt(100);
-        if (!(jumpChance < 20)) {
-            map.moveActor(actor, locationToJump);
-            return true;
-        } else {
-            actor.hurt(damage);
-            return false;
-        }
-    }
-
-    @Override
     public String getName() {
         return "Sapling";
     }
@@ -55,6 +45,11 @@ public class Sapling extends Tree{
     @Override
     public int getDamage() {
         return damage;
+    }
+
+    @Override
+    public int getChance() {
+        return chance;
     }
 }
 
