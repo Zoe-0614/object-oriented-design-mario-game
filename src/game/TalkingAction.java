@@ -33,7 +33,7 @@ public class TalkingAction extends Action {
         }
         //If actor has Power Star ONLY
         else if((actor.hasCapability(Status.INVINCIBLE))){
-            newToadTalk.remove(1); //"YO b
+            newToadTalk.remove(1); 
         }
         //has wrench only
         else if(actor.getWeapon() instanceof Wrench){
