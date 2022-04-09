@@ -17,7 +17,7 @@ public class Sprout extends Tree{
         this.chance = 90;
     }
     @Override
-    protected void drop(Location location){
+    public void drop(Location location){
         //Add Goomba (10% to spawn)
         Random random = new Random();
         int prob = random.nextInt(100);

@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import java.util.List;
 import java.util.Random;
 
-abstract public class Tree extends Ground implements JumpCapable {
+abstract public class Tree extends Ground implements JumpCapable, SpawnCapable {
     protected int age;
     /**
      * Constructor.
@@ -43,5 +43,5 @@ abstract public class Tree extends Ground implements JumpCapable {
 
     }
 
-    protected abstract void drop(Location location);
+    // protected abstract void drop(Location location);
 }

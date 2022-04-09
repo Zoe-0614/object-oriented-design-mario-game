@@ -17,7 +17,7 @@ public class Sapling extends Tree{
         this.chance = 80;
     }
     @Override
-    protected void drop(Location location){
+    public void drop(Location location){
         Random random = new Random();
 
         int prob = random.nextInt(100);

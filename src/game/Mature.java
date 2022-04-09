@@ -21,7 +21,7 @@ public class Mature extends Tree{
     }
 
     @Override
-    protected void drop(Location location) {
+    public void drop(Location location) {
         Random random = new Random();
         GameMap map = location.map();
         int prob = random.nextInt(100);
