@@ -18,18 +18,7 @@ public class Sprout extends Tree{
         this.damage = 10;
         this.chance = 90;
     }
-    @Override
-    protected void drop(Location location){
-        //Add Goomba (10% to spawn)
-        Random random = new Random();
-        int prob = random.nextInt(100);
-        if (prob < 10){
-            if (!location.containsAnActor()){
-                location.addActor(new Goomba(location));
-            }
-        }
 
-    }
 
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         if (direction.equals("")) {
@@ -65,4 +54,15 @@ public class Sprout extends Tree{
         super.registerInstance();
     }
 
+    @Override
+    public void drop(Location location) {
+        //Add Goomba (10% to spawn)
+        Random random = new Random();
+        int prob = random.nextInt(100);
+        if (prob < 10){
+            if (!location.containsAnActor()){
+                location.addActor(new Goomba(location));
+            }
+        }
+    }
 }

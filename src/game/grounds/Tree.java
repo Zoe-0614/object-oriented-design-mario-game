@@ -5,12 +5,13 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.capabilities.JumpCapable;
+import game.capabilities.SpawnCapable;
 import game.reset.Resettable;
 
 import java.util.List;
 import java.util.Random;
 
-abstract public class Tree extends Ground implements JumpCapable, Resettable {
+abstract public class Tree extends Ground implements JumpCapable, Resettable, SpawnCapable {
     protected int age;
     /**
      * Constructor.
@@ -44,8 +45,6 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable {
 
 
     }
-
-    protected abstract void drop(Location location);
 
 
     @Override

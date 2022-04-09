@@ -18,17 +18,6 @@ public class Sapling extends Tree{
         this.damage = 20;
         this.chance = 80;
     }
-    @Override
-    protected void drop(Location location){
-        Random random = new Random();
-
-        int prob = random.nextInt(100);
-        //Sapling
-        //Drop $20
-        if (prob < 10){
-            location.addItem(new Coin(20));
-        }
-    }
 
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         if (direction.equals("")) {
@@ -62,6 +51,18 @@ public class Sapling extends Tree{
     @Override
     public void registerInstance() {
         super.registerInstance();
+    }
+
+    @Override
+    public void drop(Location location) {
+        Random random = new Random();
+
+        int prob = random.nextInt(100);
+        //Sapling
+        //Drop $20
+        if (prob < 10){
+            location.addItem(new Coin(20));
+        }
     }
 }
 
