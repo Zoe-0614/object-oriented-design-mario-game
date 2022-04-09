@@ -28,6 +28,23 @@ abstract public class Tree extends Ground implements JumpCapable, SpawnCapable {
     public void tick(Location location){
         super.tick(location);
         age ++;
+        /*
+        drop is just a signle method that makes no sense
+        outside of for tree classes
+
+        OVERKILL
+        why would drop coin need to be
+
+        an intereface
+
+        Like lets say if tree's drop needs an extra parameter
+        and we do an interface, then the power star's
+        paramter will be affected since they both use
+        the same interface but they both don't
+
+
+         */
+
 //        System.out.println("age:"+age);
         if (age == 10){
             location.setGround(new Sapling());
