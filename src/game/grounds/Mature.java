@@ -1,19 +1,21 @@
-package game;
+package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actions.JumpAction;
+import game.enemies.Koopa;
 
 import java.util.Random;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
-public class Mature extends Tree{
+public class Mature extends Tree {
+
     public Mature(){
         super('T',20);
-
     }
 
     @Override
@@ -24,7 +26,7 @@ public class Mature extends Tree{
         //Add Koopa
         if (prob < 15) {
             if (!location.containsAnActor()) {
-                location.addActor(new Koopa());
+                location.addActor(new Koopa(location));
             }
         }
         //Create new sprout
@@ -114,5 +116,15 @@ public class Mature extends Tree{
         ActionList actionList = new ActionList();
         actionList.add(new JumpAction(location, direction));
         return actionList;
+    }
+
+    @Override
+    public void resetInstance() {
+        super.resetInstance();
+    }
+
+    @Override
+    public void registerInstance() {
+        super.registerInstance();
     }
 }

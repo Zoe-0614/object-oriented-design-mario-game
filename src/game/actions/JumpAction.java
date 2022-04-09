@@ -1,10 +1,11 @@
-package game;
+package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.enums.Status;
 
 import java.util.Random;
 
@@ -57,6 +58,7 @@ public class JumpAction extends Action {
                 actor.hurt(damage);
             }
         }
+
         if (isSuccess) {
             return actor + " jumped and is standing on top of " + ground.getClass().getSimpleName();
         }

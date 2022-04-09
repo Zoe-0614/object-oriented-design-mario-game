@@ -1,4 +1,4 @@
-package game;
+package game.items;
 
 
 import edu.monash.fit2099.engine.actors.Actor;
@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
 public abstract class MagicalItem extends Item {
-    private int turn = 10;
 
     /***
      * Constructor.
@@ -20,15 +19,6 @@ public abstract class MagicalItem extends Item {
     }
 
     public abstract void consumedBy(Actor actor, GameMap map);
-
-    @Override
-    public void tick(Location location, Actor actor) {
-        super.tick(location);
-        turn--;
-        if (turn == 0){
-            actor.removeItemFromInventory(this);
-        }
-    }
 
 
 }
