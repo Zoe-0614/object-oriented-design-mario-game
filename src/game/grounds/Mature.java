@@ -1,5 +1,4 @@
 package game.grounds;
-
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -12,10 +11,14 @@ import java.util.Random;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
-public class Mature extends Tree {
+public class Mature extends Tree{
+    private int damage;
+    private int chance;
 
     public Mature(){
         super('T',20);
+        this.damage = 30;
+        this.chance = 70;
     }
 
     @Override
@@ -55,7 +58,7 @@ public class Mature extends Tree {
                     //-1 because it is the surrounding square so when it adds offset it'll be (-1,0,1)
                     randomY = currentY - 1 + offsetY;
 
-                //Check randomX(orY) is less than maxindex
+                    //Check randomX(orY) is less than maxindex
                 }while(randomX < 0 || randomY < 0 || randomX > location.map().getXRange().max() || randomY > location.map().getXRange().max());
                 //While loop to make sure randomX and randomY is not < 0, otherwise it will go out of bound
 
@@ -114,17 +117,34 @@ public class Mature extends Tree {
             return new ActionList();
         }
         ActionList actionList = new ActionList();
-        actionList.add(new JumpAction(location, direction));
+        actionList.add(new JumpAction(this, location, direction));
         return actionList;
     }
 
     @Override
-    public void resetInstance() {
-        super.resetInstance();
+    public boolean jump(Actor actor, Location locationToJump, GameMap map) {
+        int jumpChance = new Random().nextInt(100);
+        if (!(jumpChance < 30)) {
+            map.moveActor(actor, locationToJump);
+            return true;
+        } else {
+            actor.hurt(damage);
+            return false;
+        }
     }
 
     @Override
-    public void registerInstance() {
-        super.registerInstance();
+    public String getName() {
+        return "Mature";
+    }
+
+    @Override
+    public int getDamage() {
+        return damage;
+    }
+
+    @Override
+    public int getChance() {
+        return chance;
     }
 }
