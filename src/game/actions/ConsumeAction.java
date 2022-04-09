@@ -2,6 +2,7 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.MagicalItem;
 
@@ -29,9 +30,9 @@ public class ConsumeAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         if (map.locationOf(actor).getItems().contains(magicalItem)){
-            map.locationOf(actor).removeItem(magicalItem);
-        } else {
-            actor.removeItemFromInventory(magicalItem);
+            map.locationOf(actor).removeItem((Item) magicalItem);
+        } else if (actor.getInventory().contains(magicalItem)){
+            actor.removeItemFromInventory((Item)magicalItem);
         }
         magicalItem.consumedBy(actor, map);
         return menuDescription(actor);

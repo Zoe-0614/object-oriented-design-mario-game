@@ -1,13 +1,14 @@
 package game.items;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.grounds.Dirt;
 import game.enums.Status;
 
-public class PowerStar extends MagicalItem {
+public class PowerStar extends Item implements MagicalItem {
     private int turn = 10;
     /***
      * Constructor.
@@ -26,7 +27,7 @@ public class PowerStar extends MagicalItem {
     public void consumedBy(Actor actor, GameMap map) {
         actor.heal(200);
         actor.addCapability(Status.INVINCIBLE);
-        System.out.println("Mario is INVINCIBLE!");
+        System.out.println(actor + " is INVINCIBLE!");
 
         tick(map.locationOf(actor),actor);
 
