@@ -1,7 +1,5 @@
 package game.reset;
 
-import game.Resettable;
-
 import java.util.ArrayList;
 import java.util.List;
 

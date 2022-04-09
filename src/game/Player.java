@@ -7,13 +7,18 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Location;
+import game.enums.Status;
+import game.reset.ResetAction;
+import game.reset.Resettable;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Actor  {
+public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
+	private int balance;
+
 
 	/**
 	 * Constructor.
@@ -26,6 +31,7 @@ public class Player extends Actor  {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		Wallet.addActor(this);
+		registerInstance();
 	}
 
 	@Override
@@ -33,6 +39,7 @@ public class Player extends Actor  {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+		actions.add(new ResetAction());
 		String hp = printHp();
 		Location actorLocation = map.locationOf(this);
 		//Player Status
@@ -48,5 +55,20 @@ public class Player extends Actor  {
 		return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar()): super.getDisplayChar();
 	}
 
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+
+
+	@Override
+	public void resetInstance() {
+		this.resetMaxHp(this.getMaxHp());
+		this.removeCapability(Status.INVINCIBLE);
+		this.removeCapability(Status.TALL);
+	}
 
 }
