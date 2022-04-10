@@ -2,6 +2,7 @@ package game.actions;
 
 import java.util.Random;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
@@ -12,7 +13,7 @@ import game.items.Wrench;
 /**
  * Special Action for attacking Koopa.
  */
-public class AttackKoopaAction extends AttackAction {
+public class AttackKoopaAction extends Action {
 
     /**
      * The Actor that is to be attacked
@@ -35,7 +36,8 @@ public class AttackKoopaAction extends AttackAction {
      * @param target the Actor to attack
      */
     public AttackKoopaAction(Actor target, String direction) {
-        super(target, direction);
+        this.target = target;
+        this.direction=direction;
     }
 
     @Override

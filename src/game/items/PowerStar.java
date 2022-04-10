@@ -50,7 +50,7 @@ public class PowerStar extends MagicalItem {
 
     @Override
     public String toString() {
-        return "Mario consumes Power Star - " + turn + " turns remaining";
+        return super.toString() + " - "+ turn + " turns remaining";
     }
 
 
