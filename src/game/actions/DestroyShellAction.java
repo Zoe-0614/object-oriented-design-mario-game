@@ -19,7 +19,7 @@ public class DestroyShellAction extends Action {
 
 
     @Override
-    public String execute(Actor actor, GameMap map) {
+    public String execute(Actor target, GameMap map) {
         Location location = map.locationOf(target);
         map.removeActor(target);
         location.addItem(new SuperMushroom());

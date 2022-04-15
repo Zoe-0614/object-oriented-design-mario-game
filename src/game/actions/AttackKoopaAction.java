@@ -56,22 +56,15 @@ public class AttackKoopaAction extends Action {
             Wrench wrench = new Wrench();
             if (actor.getInventory().contains(wrench)){
                 wrench.getDropAction(actor);
-                //become super mushroom
-                map.locationOf(target).addItem(new SuperMushroom());
-                // remove actor
-                map.removeActor(target);
+                new DestroyShellAction(target,map,direction).execute(target, map);
             }
         }
 
-        return menuDescription(target);
+        return menuDescription(actor);
     }
 
     @Override
     public String menuDescription(Actor actor) {
         return actor + " attacks " + target + " at " + direction;
-    }
-
-    public String menuDescription(Enemy target){
-        return "Destroys " + target  + "'s shell";
     }
 }
