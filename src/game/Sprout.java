@@ -7,25 +7,26 @@ import edu.monash.fit2099.engine.positions.Location;
 
 import java.util.Random;
 
-public class Sapling extends Tree{
+public class Sprout extends Tree{
     private int damage;
     private int chance;
 
-    public Sapling(){
-        super('t',10);
-        this.damage = 20;
-        this.chance = 80;
+    public Sprout(){
+        super('+',0);
+        this.damage = 10;
+        this.chance = 90;
     }
     @Override
     public void drop(Location location){
+        //Add Goomba (10% to spawn)
         Random random = new Random();
-
         int prob = random.nextInt(100);
-        //Sapling
-        //Drop $20
         if (prob < 10){
-            location.addItem(new Coin(20));
+            if (!location.containsAnActor()){
+                location.addActor(new Goomba());
+            }
         }
+
     }
 
     public ActionList allowableActions(Actor actor, Location location, String direction) {
@@ -39,7 +40,7 @@ public class Sapling extends Tree{
 
     @Override
     public String getName() {
-        return "Sapling";
+        return "Sprout";
     }
 
     @Override
@@ -52,5 +53,3 @@ public class Sapling extends Tree{
         return chance;
     }
 }
-
-

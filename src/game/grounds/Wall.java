@@ -1,12 +1,10 @@
-package game.grounds;
+package game;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.JumpAction;
-import game.capabilities.JumpCapable;
 
 import java.util.Random;
 
@@ -19,12 +17,12 @@ public class Wall extends Ground implements JumpCapable {
 		this.damage = 20;
 		this.chance = 80;
 	}
-
+	
 	@Override
 	public boolean canActorEnter(Actor actor) {
 		return false;
 	}
-
+	
 	@Override
 	public boolean blocksThrownObjects() {
 		return true;
@@ -53,6 +51,4 @@ public class Wall extends Ground implements JumpCapable {
 	public int getChance() {
 		return chance;
 	}
-
-
 }

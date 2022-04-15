@@ -1,10 +1,9 @@
-package game.grounds;
+package game;
+
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.JumpAction;
-import game.enemies.Koopa;
 
 import java.util.Random;
 
@@ -21,8 +20,69 @@ public class Mature extends Tree{
         this.chance = 70;
     }
 
+    @Override
+    public void drop(Location location) {
+        Random random = new Random();
+        GameMap map = location.map();
+        int prob = random.nextInt(100);
+        //Add Koopa
+        if (prob < 15) {
+            if (!location.containsAnActor()) {
+                location.addActor(new Koopa());
+            }
+        }
+        //Create new sprout
+        if (age % 5 ==0) {
+            //Get the map's max x and y, generate random value between them and set that to sprout
+            boolean isTree = true;
+            int dirtCount = countDirt(location);
+            //If all surrounding squares are filled, stop loop
+            if (dirtCount == 0){
+                isTree = false;
+            }
+            while (isTree){
+                int randomX;
+                int randomY;
+                do{
+                    int currentX = location.x();
+                    int currentY = location.y();
+
+                    //Off set is (0,1,2)
+                    int offsetX = random.nextInt(3);
+                    //-1 because it is the surrounding square so when it adds offset it'll be (-1,0,1)
+                    randomX = currentX - 1 + offsetX;
+
+                    //Off set is (0,1,2)
+                    int offsetY = random.nextInt(3);
+                    //-1 because it is the surrounding square so when it adds offset it'll be (-1,0,1)
+                    randomY = currentY - 1 + offsetY;
+
+                //Check randomX(orY) is less than maxindex
+                }while(randomX < 0 || randomY < 0 || randomX > location.map().getXRange().max() || randomY > location.map().getXRange().max());
+                //While loop to make sure randomX and randomY is not < 0, otherwise it will go out of bound
 
 
+                //Sprout spawn location = map[x][y]
+                Location spawn = map.at(randomX, randomY);
+
+                //If it is dirt, new sprout
+                if (spawn.getDisplayChar() == '.') {
+                    spawn.setGround(new Sprout());
+
+                    isTree = false;
+                }
+
+
+
+
+            }
+        }
+//        20% to wither and die(become dirt)
+//        if (prob < 20){
+//            location.setGround(new Dirt());
+//        }
+
+    }
     //Calculate the dirtCount in the surrounding area
     public int countDirt(Location location){
 //      From -1,0,1 (Surrounding Space)
@@ -86,65 +146,4 @@ public class Mature extends Tree{
     public int getChance() {
         return chance;
     }
-
-    @Override
-    public void drop(Location location) {
-        Random random = new Random();
-        GameMap map = location.map();
-        int prob = random.nextInt(100);
-        //Add Koopa
-        if (prob < 15) {
-            if (!location.containsAnActor()) {
-                location.addActor(new Koopa(location));
-            }
-        }
-        //Create new sprout
-        if (age % 5 == 0) {
-            //Get the map's max x and y, generate random value between them and set that to sprout
-            boolean isTree = true;
-            int dirtCount = countDirt(location);
-            //If all surrounding squares are filled, stop loop
-            if (dirtCount == 0) {
-                isTree = false;
-            }
-            while (isTree) {
-                int randomX;
-                int randomY;
-                do {
-                    int currentX = location.x();
-                    int currentY = location.y();
-
-                    //Off set is (0,1,2)
-                    int offsetX = random.nextInt(3);
-                    //-1 because it is the surrounding square so when it adds offset it'll be (-1,0,1)
-                    randomX = currentX - 1 + offsetX;
-
-                    //Off set is (0,1,2)
-                    int offsetY = random.nextInt(3);
-                    //-1 because it is the surrounding square so when it adds offset it'll be (-1,0,1)
-                    randomY = currentY - 1 + offsetY;
-
-                    //Check randomX(orY) is less than maxindex
-                } while (randomX < 0 || randomY < 0 || randomX > location.map().getXRange().max() || randomY > location.map().getXRange().max());
-                //While loop to make sure randomX and randomY is not < 0, otherwise it will go out of bound
-
-
-                //Sprout spawn location = map[x][y]
-                Location spawn = map.at(randomX, randomY);
-
-                //If it is dirt, new sprout
-                if (spawn.getDisplayChar() == '.') {
-                    spawn.setGround(new Sprout());
-
-                    isTree = false;
-                }
-
-            }
-        }
-    }
-    //        20% to wither and die(become dirt)
-//        if (prob < 20){
-//            location.setGround(new Dirt());
-//        }
 }
-
