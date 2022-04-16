@@ -21,7 +21,7 @@ import java.util.Map;
 public abstract class Enemy extends Actor implements Resettable {
 
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
-    private Location location;
+    protected Location location;
     /**
      * Constructor.
      *
@@ -55,8 +55,8 @@ public abstract class Enemy extends Actor implements Resettable {
         }
 
         if (this.hasCapability(Status.ENGAGED)){
-            behaviours.put(behaviours.size(), new AttackBehaviour(otherActor, direction));
-            behaviours.put(behaviours.size(), new FollowBehaviour(otherActor));
+            behaviours.put(8, new AttackBehaviour(otherActor, direction));
+            behaviours.put(9, new FollowBehaviour(otherActor));
         }
         return actions;
     }
@@ -76,8 +76,8 @@ public abstract class Enemy extends Actor implements Resettable {
     }
 
 
-    public void addBehaviours(Behaviour behaviour) {
-        behaviours.put(behaviours.size(),behaviour);
+    public void addBehaviours(int priority, Behaviour behaviour) {
+        behaviours.put(priority,behaviour);
     }
 
     public Map<Integer, Behaviour> getBehaviours() {

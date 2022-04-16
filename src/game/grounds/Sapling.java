@@ -1,13 +1,16 @@
-package game;
+package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actions.JumpAction;
+import game.grounds.Tree;
+import game.items.Coin;
 
 import java.util.Random;
 
-public class Sapling extends Tree{
+public class Sapling extends Tree {
     private int damage;
     private int chance;
 

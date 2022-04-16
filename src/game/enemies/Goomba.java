@@ -8,7 +8,9 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.actions.SuicideAction;
 import game.enemies.Enemy;
+import game.items.Coin;
 
 import java.util.Random;
 
@@ -16,7 +18,6 @@ import java.util.Random;
  * A little fungus guy.
  */
 public class Goomba extends Enemy {
-	private Random rand;
 	/**
 	 * Constructor.
 	 * @param location
@@ -26,6 +27,7 @@ public class Goomba extends Enemy {
 	}
 
 
+
 	/**
 	 * Figure out what to do next.
 	 * @see Actor#playTurn(ActionList, Action, GameMap, Display)
@@ -33,6 +35,15 @@ public class Goomba extends Enemy {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		super.playTurn(actions, lastAction, map, display);
+
+		//10% chance: suicide
+		Random random = new Random();
+		int prob = random.nextInt(100);
+
+		if (prob < 10){
+			new SuicideAction().execute(this, map, this.location);
+		}
+
 
 		return new DoNothingAction();
 	}

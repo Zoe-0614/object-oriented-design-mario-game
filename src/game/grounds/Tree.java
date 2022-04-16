@@ -8,7 +8,6 @@ import game.capabilities.JumpCapable;
 import game.capabilities.SpawnCapable;
 import game.reset.Resettable;
 
-import java.util.List;
 import java.util.Random;
 
 abstract public class Tree extends Ground implements JumpCapable, Resettable, SpawnCapable {

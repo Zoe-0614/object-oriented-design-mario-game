@@ -1,16 +1,20 @@
-package game;
+package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actions.JumpAction;
+import game.enemies.Koopa;
+import game.grounds.Sprout;
+import game.grounds.Tree;
 
 import java.util.Random;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
-public class Mature extends Tree{
+public class Mature extends Tree {
     private int damage;
     private int chance;
 
@@ -28,7 +32,7 @@ public class Mature extends Tree{
         //Add Koopa
         if (prob < 15) {
             if (!location.containsAnActor()) {
-                location.addActor(new Koopa());
+                location.addActor(new Koopa(location));
             }
         }
         //Create new sprout
