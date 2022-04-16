@@ -47,7 +47,7 @@ public class ConsumeAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " consumes " + magicalItem;
+        return actor + " consumes " + magicalItem.toString();
     }
 
 }

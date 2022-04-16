@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.enums.Status;
 
 /**
  * Special Action for attacking other Actors.
@@ -41,17 +42,25 @@ public class AttackAction extends Action {
 
 	@Override
 	public String execute(Actor actor, GameMap map) {
-
+		String result = "";
+		//determine whether the target is conscious (used when instant kill)
+		boolean conscious = true;
 		Weapon weapon = actor.getWeapon();
 
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
 			return actor + " misses " + target + ".";
 		}
 
-		int damage = weapon.damage();
-		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
-		target.hurt(damage);
-		if (!target.isConscious()) {
+		if (actor.hasCapability(Status.INVINCIBLE)){
+			conscious = false;
+
+		} else {
+			int damage = weapon.damage();
+			result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
+			target.hurt(damage);
+		}
+
+		if (!target.isConscious() || !conscious) {
 			ActionList dropActions = new ActionList();
 			// drop all items
 			for (Item item : target.getInventory())

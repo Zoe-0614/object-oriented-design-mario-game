@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.JumpAction;
+import game.enums.Status;
 import game.grounds.Tree;
 import game.items.Coin;
 
@@ -36,7 +37,9 @@ public class Sapling extends Tree {
             return new ActionList();
         }
         ActionList actionList = new ActionList();
-        actionList.add(new JumpAction(this, location, direction));
+        if (!actor.hasCapability(Status.INVINCIBLE)) {
+            actionList.add(new JumpAction(this, location, direction));
+        }
         return actionList;
     }
 

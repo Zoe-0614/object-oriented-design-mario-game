@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.JumpAction;
 import game.capabilities.JumpCapable;
+import game.enums.Status;
 
 import java.util.Random;
 
@@ -35,7 +36,9 @@ public class Wall extends Ground implements JumpCapable {
 			return new ActionList();
 		}
 		ActionList actionList = new ActionList();
-		actionList.add(new JumpAction(this, location, direction));
+		if (!actor.hasCapability(Status.INVINCIBLE)) {
+			actionList.add(new JumpAction(this, location, direction));
+		}
 		return actionList;
 	}
 

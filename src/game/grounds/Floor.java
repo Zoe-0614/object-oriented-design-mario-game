@@ -13,8 +13,7 @@ public class Floor extends Ground {
 
 	@Override
 	public boolean canActorEnter(Actor actor) {
-		char isEnemies = actor.getDisplayChar();
-		if (isEnemies == 'K' || isEnemies == 'g') {
+		if (actor.getDisplayChar() != 'm' || actor.getDisplayChar() != 'M') {
 			return false;
 		}
 		return true;

@@ -36,6 +36,7 @@ public abstract class Enemy extends Actor implements Resettable {
         registerInstance();
     }
 
+
     /**
      * At the moment, we only make it can be attacked by Player.
      * You can do something else with this method.

@@ -55,7 +55,6 @@ public class AttackBehaviour implements Behaviour {
             target.hurt(weapon.damage());
             if(target.hasCapability(Status.TALL)) {
                 target.removeCapability(Status.TALL);
-                return null;
             }
 
             if (!target.isConscious()) {
@@ -67,7 +66,6 @@ public class AttackBehaviour implements Behaviour {
                     drop.execute(target, map);
                 // remove actor
                 map.removeActor(target);
-                return null;
             }
         }
 
