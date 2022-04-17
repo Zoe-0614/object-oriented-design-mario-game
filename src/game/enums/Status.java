@@ -10,5 +10,7 @@ public enum Status {
     TALL, // use this status to tell that current instance has "grown"
     INVINCIBLE, // use this status after the player had consumed Power Star
     RESET,
-    NOT_DORMANT // use this to determine Koopa
+    NOT_DORMANT, // use this to determine Koopa
+    ISPLAYER, //use this to check if toad is talking to player
+
 }
