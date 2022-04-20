@@ -43,7 +43,7 @@ public class Koopa extends Enemy {
         }
 
         else if (this.getDisplayChar() == 'D'){
-            if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            if (otherActor.hasCapability(Status.WRENCH)){
                 actions.add(new AttackKoopaAction(this, direction));
             }
         }
