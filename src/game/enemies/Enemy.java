@@ -17,10 +17,11 @@ import game.reset.Resettable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public abstract class Enemy extends Actor implements Resettable {
 
-    private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+    private final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
     protected Location location;
     /**
      * Constructor.
