@@ -12,5 +12,6 @@ public enum Status {
     RESET,
     NOT_DORMANT, // use this to determine Koopa
     ISPLAYER, //use this to check if toad is talking to player
+    WRENCH // determines the player has a wrench
 
 }
