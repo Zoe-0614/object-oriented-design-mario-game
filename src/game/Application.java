@@ -9,6 +9,8 @@ import game.grounds.Dirt;
 import game.grounds.Floor;
 import game.grounds.Sprout;
 import game.grounds.Wall;
+import game.items.PowerStar;
+import game.items.SuperMushroom;
 
 import java.util.Arrays;
 import java.util.List;
@@ -52,8 +54,9 @@ public class Application {
 			Actor mario = new Player("Mario", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 10));
 
-			// FIXME: the Goomba should be generated from the Tree
-			// gameMap.at(35, 10).addActor(new Goomba());
+
+			gameMap.at(35, 10).addItem(new PowerStar());
+			gameMap.at(10, 15).addItem(new SuperMushroom());
 
 			world.run();
 

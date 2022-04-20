@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actions.ConsumeAction;
 import game.grounds.Dirt;
 import game.enums.Status;
 
@@ -14,6 +15,7 @@ public class PowerStar extends MagicalItem {
      */
     public PowerStar() {
         super("PowerStar", '*', true);
+        addAction(new ConsumeAction(this));
     }
 
 
