@@ -11,6 +11,9 @@ import game.enums.Status;
 
 import java.util.Random;
 
+/**
+ * Special Behaviour for enemies to attack other Actors.
+ */
 public class AttackBehaviour implements Behaviour {
 
     /**
@@ -37,7 +40,13 @@ public class AttackBehaviour implements Behaviour {
         this.direction = direction;
     }
 
-    // TODO: develop and use it to attack the player automatically.
+    /**
+     * Attack the player automatically
+     *
+     * @param actor the Actor acting
+     * @param map   the GameMap containing the Actor
+     * @return null or DoNothingAction()
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         Weapon weapon = actor.getWeapon();

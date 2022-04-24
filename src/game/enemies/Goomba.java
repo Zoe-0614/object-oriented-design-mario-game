@@ -18,45 +18,46 @@ import java.util.Random;
  * A little fungus guy.
  */
 public class Goomba extends Enemy {
-	/**
-	 * Constructor.
-	 * @param location
-	 */
-	public Goomba(Location location) {
-		super("Goomba", 'g', 20, location);
-	}
+    /**
+     * Constructor.
+     *
+     * @param location the location of Goomba
+     */
+    public Goomba(Location location) {
+        super("Goomba", 'g', 20, location);
+    }
 
 
+    /**
+     * Figure out what to do next.
+     *
+     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+     */
+    @Override
+    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        super.playTurn(actions, lastAction, map, display);
 
-	/**
-	 * Figure out what to do next.
-	 * @see Actor#playTurn(ActionList, Action, GameMap, Display)
-	 */
-	@Override
-	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-		super.playTurn(actions, lastAction, map, display);
+        //10% chance: suicide
+        Random random = new Random();
+        int prob = random.nextInt(100);
 
-		//10% chance: suicide
-		Random random = new Random();
-		int prob = random.nextInt(100);
-
-		if (prob < 10){
-			new SuicideAction().execute(this, map, this.location);
-		}
+        if (prob < 10) {
+            new SuicideAction().execute(this, map, this.location);
+        }
 
 
-		return new DoNothingAction();
-	}
+        return new DoNothingAction();
+    }
 
-	/**
-	 * Creates and returns an intrinsic weapon.
-	 *
-	 * @return a freshly-instantiated IntrinsicWeapon
-	 */
-	@Override
-	protected IntrinsicWeapon getIntrinsicWeapon() {
-		return new IntrinsicWeapon(10, "kick");
-	}
+    /**
+     * Creates and returns an intrinsic weapon.
+     *
+     * @return a freshly-instantiated IntrinsicWeapon
+     */
+    @Override
+    protected IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(10, "kick");
+    }
 
 
 }

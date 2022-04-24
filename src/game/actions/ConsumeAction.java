@@ -6,8 +6,14 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.MagicalItem;
 
+/**
+ * Special Action for consuming Magical Items.
+ */
 public class ConsumeAction extends Action {
 
+    /**
+     * The Magical Item that will be consumed
+     */
     private final MagicalItem magicalItem;
 
     /**
@@ -20,7 +26,7 @@ public class ConsumeAction extends Action {
     }
 
     /**
-     * Add the item to the actor's inventory.
+     * Remove the item from the actor's inventory or remove the item from the location to consume.
      *
      * @see Action#execute(Actor, GameMap)
      * @param actor The actor performing the action.

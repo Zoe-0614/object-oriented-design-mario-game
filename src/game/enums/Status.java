@@ -9,7 +9,7 @@ public enum Status {
     ENGAGED, // use this status once the enemy is engaged in a fight
     TALL, // use this status to tell that current instance has "grown"
     INVINCIBLE, // use this status after the player had consumed Power Star
-    RESET,
+    RESET, //use to determine resettable
     NOT_DORMANT, // use this to determine Koopa
     ISPLAYER, //use this to check if toad is talking to player
     WRENCH // determines the player has a wrench

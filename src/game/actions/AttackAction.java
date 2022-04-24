@@ -34,12 +34,21 @@ public class AttackAction extends Action {
 	 * Constructor.
 	 * 
 	 * @param target the Actor to attack
+	 * @param direction the direction of incoming attack
 	 */
 	public AttackAction(Actor target, String direction) {
 		this.target = target;
 		this.direction = direction;
 	}
 
+	/**
+	 * Attack the enemies.
+	 *
+	 * @see Action#execute(Actor, GameMap)
+	 * @param actor The actor performing the action.
+	 * @param map The map the actor is on.
+	 * @return a suitable description to display in the UI
+	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		String result = "";
@@ -71,10 +80,16 @@ public class AttackAction extends Action {
 			map.removeActor(target);
 			result += System.lineSeparator() + target + " is killed.";
 		}
-
 		return result;
 	}
 
+	/**
+	 * Describe the action in a format suitable for displaying in the menu.
+	 *
+	 * @see Action#menuDescription(Actor)
+	 * @param actor The actor performing the action.
+	 * @return a string, e.g. "Mario attacks Goomba at {The direction of incoming attack}"
+	 */
 	@Override
 	public String menuDescription(Actor actor) {
 		return actor + " attacks " + target + " at " + direction;

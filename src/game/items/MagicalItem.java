@@ -4,8 +4,11 @@ package game.items;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * Abstract base class representing a physical magical items in the game world.
+ *
+ */
 public abstract class MagicalItem extends Item {
 
     /***
@@ -18,5 +21,12 @@ public abstract class MagicalItem extends Item {
         super(name, displayChar, portable);
     }
 
+
+    /**
+     * An abstract method to execute the features after an Actor consumed the Magical Items
+     *
+     * @param actor The Actor who consumed the Magical Items
+     * @param map   the map that contains this location
+     */
     public abstract void consumedBy(Actor actor, GameMap map);
 }

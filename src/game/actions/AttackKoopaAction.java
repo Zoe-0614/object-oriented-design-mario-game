@@ -34,12 +34,21 @@ public class AttackKoopaAction extends Action {
      * Constructor.
      *
      * @param target the Actor to attack
+     * @param direction the direction to attack
      */
     public AttackKoopaAction(Actor target, String direction) {
         this.target = target;
-        this.direction=direction;
+        this.direction = direction;
     }
 
+    /**
+     * Attack Koopa and destroy its shell if the player has Wrench.
+     *
+     * @see Action#execute(Actor, GameMap)
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return a suitable description to display in the UI
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
 
@@ -59,10 +68,16 @@ public class AttackKoopaAction extends Action {
                 new DestroyShellAction(target,map,direction).execute(target, map);
             }
         }
-
         return menuDescription(actor);
     }
 
+    /**
+     * Describe the action in a format suitable for displaying in the menu.
+     *
+     * @see Action#menuDescription(Actor)
+     * @param actor The actor performing the action.
+     * @return a string, e.g. "Mario attacks Koopa at {The direction of incoming attack}"
+     */
     @Override
     public String menuDescription(Actor actor) {
         return actor + " attacks " + target + " at " + direction;
