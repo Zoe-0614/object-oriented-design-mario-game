@@ -42,7 +42,10 @@ public class Goomba extends Enemy {
         int prob = random.nextInt(100);
 
         if (prob < 10) {
-            new SuicideAction().execute(this, map, this.location);
+            //new SuicideAction().execute(this, map, this.location);
+            SuicideAction suicide = new SuicideAction();
+            suicide.execute(this, map);
+            return suicide;
         }
 
         return action;
