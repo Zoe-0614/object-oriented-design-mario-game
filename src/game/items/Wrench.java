@@ -17,7 +17,6 @@ public class Wrench extends WeaponItem implements Buyable {
      */
     public Wrench() {
         super("Wrench", 'w', 50, "destroys", 80);
-        this.addCapability(Status.WRENCH);
         this.price = 200;
     }
 

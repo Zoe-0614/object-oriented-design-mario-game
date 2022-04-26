@@ -18,9 +18,6 @@ public class BuyAction extends Action {
         boolean isBought;
         isBought = buyableItem.buy(actor);
         if (isBought) {
-            if (buyableItem.getItem().getDisplayChar() == 'w') {
-                actor.addCapability(Status.WRENCH);
-            }
             return menuDescription(actor);
         }
         return "You do not have enough coins!";

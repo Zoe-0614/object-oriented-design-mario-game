@@ -1,5 +1,6 @@
 package game.actions;
 
+import java.util.List;
 import java.util.Random;
 
 import edu.monash.fit2099.engine.actions.Action;
@@ -83,11 +84,18 @@ public class AttackKoopaAction extends Action {
         }
         else {
            //Wrench wrench = new Wrench();
-            //if (actor.getInventory().contains(wrench)){
-            if (actor.hasCapability(Status.WRENCH)) {
+//            List<Item> inventory = actor.getInventory();
+//            boolean hasWrench = false;
+//            for (int i = 0; i < inventory.size(); i++) {
+//                if (inventory.get(i).getDisplayChar() == 'w') {
+//                    hasWrench = true;
+//                }
+//            }
+//            if (hasWrench){
+            //if (actor.hasCapability(Status.WRENCH)) {
                 //wrench.getDropAction(actor);
                 result += new DestroyShellAction(target,map,direction).execute(target, map);
-            }
+//            }
         }
 
 //        if (!target.isConscious() && actor.hasCapability(Status.INVINCIBLE)) {
@@ -116,6 +124,7 @@ public class AttackKoopaAction extends Action {
         if (target.isConscious()) {
             return actor + " attacks " + target + " at " + direction;
         }
+        //else if (!target.isConscious() && )
         return actor + " destroys Koopa (Dormant)";
     }
 }

@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
@@ -17,6 +18,8 @@ import game.behaviours.FollowBehaviour;
 import game.enums.Status;
 import game.items.SuperMushroom;
 
+import java.util.List;
+
 /**
  * A reptilian mini-trooper.
  */
@@ -28,7 +31,6 @@ public class Koopa extends Enemy {
      */
     public Koopa(Location location) {
         super("Koopa", 'K', 100, location);
-        this.addCapability(Status.NOT_DORMANT);
         this.addItemToInventory(new SuperMushroom());
     }
 
@@ -39,13 +41,21 @@ public class Koopa extends Enemy {
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
      * @return list of actions
-     * @see Status#NOT_DORMANT
-     * @see Status#WRENCH
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
 
+        List<Item> inventory = otherActor.getInventory();
+        boolean hasWrench = false;
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).getDisplayChar() == 'w') {
+                hasWrench = true;
+            }
+        }
+        if (!this.isConscious() && !hasWrench) {
+            return actions;
+        }
         if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new AttackKoopaAction(this, direction));
             this.addCapability(Status.ENGAGED);
