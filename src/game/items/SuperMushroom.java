@@ -1,21 +1,26 @@
 package game.items;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeAction;
+import game.behaviours.Buyable;
 import game.enums.Status;
 
 /**
  * Class representing the Super Mushroom.
  */
 
-public class SuperMushroom extends MagicalItem {
+public class SuperMushroom extends MagicalItem implements Buyable {
+    private int price;
+
     /***
      * Constructor.
      */
     public SuperMushroom() {
         super("Super Mushroom", '^', false);
         addAction(new ConsumeAction(this));
+        this.price = 400;
     }
 
     /**
@@ -31,4 +36,13 @@ public class SuperMushroom extends MagicalItem {
     }
 
 
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
+    }
 }

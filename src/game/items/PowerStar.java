@@ -2,10 +2,12 @@ package game.items;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
+import game.behaviours.Buyable;
 import game.grounds.Dirt;
 import game.enums.Status;
 
@@ -13,11 +15,12 @@ import game.enums.Status;
  * Class representing the Power Star.
  */
 
-public class PowerStar extends MagicalItem {
+public class PowerStar extends MagicalItem implements Buyable {
     /***
      * Indicate the remaining turn of Power Star
      */
     private int turn;
+    private int price;
 
     /***
      * Constructor.
@@ -25,6 +28,7 @@ public class PowerStar extends MagicalItem {
     public PowerStar() {
         super("PowerStar", '*', true);
         addAction(new ConsumeAction(this));
+        this.price = 600;
     }
 
 
@@ -94,4 +98,13 @@ public class PowerStar extends MagicalItem {
     }
 
 
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    @Override
+    public Item getItem() {
+        return this;
+    }
 }

@@ -6,13 +6,17 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actions.BuyAction;
 import game.actions.TalkingAction;
 import game.enums.Status;
+import game.items.PowerStar;
+import game.items.SuperMushroom;
+import game.items.Wrench;
 
 public class Toad extends Actor {
 
 
-    public Toad(String name, char displayChar,int hitpoints){
+    public Toad(){
         super("Toad",'O',100);
 
     }
@@ -24,6 +28,9 @@ public class Toad extends Actor {
         if(otherActor.hasCapability(Status.ISPLAYER)){
             actions.add(new TalkingAction(this));
         }
+        actions.add(new BuyAction(new PowerStar()));
+        actions.add(new BuyAction(new SuperMushroom()));
+        actions.add(new BuyAction(new Wrench()));
         return actions;
     }
 
