@@ -9,7 +9,7 @@ public interface Buyable {
         if (Wallet.getBalance(actor) < getPrice()) {
             return false;
         }
-        Wallet.deductMoney(actor, Wallet.getBalance(actor) - getPrice());
+        Wallet.deductMoney(actor, getPrice());
         actor.addItemToInventory(getItem());
         return true;
     }
