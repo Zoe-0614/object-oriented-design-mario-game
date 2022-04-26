@@ -23,6 +23,9 @@ public class Wall extends Ground implements JumpCapable {
 	
 	@Override
 	public boolean canActorEnter(Actor actor) {
+		if (actor.hasCapability(Status.INVINCIBLE)) {
+			return true;
+		}
 		return false;
 	}
 	

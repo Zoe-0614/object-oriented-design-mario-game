@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.capabilities.JumpCapable;
 import game.capabilities.SpawnCapable;
+import game.enums.Status;
 import game.reset.Resettable;
 
 import java.util.Random;
@@ -23,6 +24,9 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
 
     @Override
     public boolean canActorEnter(Actor actor) {
+        if (actor.hasCapability(Status.INVINCIBLE)) {
+            return true;
+        }
         return false;
     }
 
