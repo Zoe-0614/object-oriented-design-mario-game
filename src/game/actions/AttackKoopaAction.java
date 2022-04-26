@@ -3,10 +3,13 @@ package game.actions;
 import java.util.Random;
 
 import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.enemies.Enemy;
+import game.enums.Status;
 import game.items.SuperMushroom;
 import game.items.Wrench;
 
@@ -53,22 +56,52 @@ public class AttackKoopaAction extends Action {
     public String execute(Actor actor, GameMap map) {
 
         Weapon weapon = actor.getWeapon();
+        String result = "";
 
-        if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
-            return actor + " misses " + target + ".";
-        }
+        if (target.isConscious()) {
+            if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
+                return actor + " misses " + target + ".";
+            }
 
-        int damage = weapon.damage();
-        System.out.println(actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.");
-        target.hurt(damage);
-        if (!target.isConscious()) {
-            Wrench wrench = new Wrench();
-            if (actor.getInventory().contains(wrench)){
-                wrench.getDropAction(actor);
-                new DestroyShellAction(target,map,direction).execute(target, map);
+            if (actor.hasCapability(Status.INVINCIBLE)) {
+//                ActionList dropActions = new ActionList();
+//                // drop all items
+//                for (Item item : target.getInventory())
+//                    dropActions.add(item.getDropAction(actor));
+//                for (Action drop : dropActions)
+//                    drop.execute(target, map);
+//                // remove actor
+//                map.removeActor(target);
+                result += actor + " instantly kills " + target;
+                result += System.lineSeparator() + new DestroyShellAction(target, map, direction).execute(target, map);
+            }
+            else {
+                int damage = weapon.damage();
+                result += actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
+                target.hurt(damage);
             }
         }
-        return menuDescription(actor);
+        else {
+           //Wrench wrench = new Wrench();
+            //if (actor.getInventory().contains(wrench)){
+            if (actor.hasCapability(Status.WRENCH)) {
+                //wrench.getDropAction(actor);
+                result += new DestroyShellAction(target,map,direction).execute(target, map);
+            }
+        }
+
+//        if (!target.isConscious() && actor.hasCapability(Status.INVINCIBLE)) {
+//            ActionList dropActions = new ActionList();
+//            // drop all items
+//            for (Item item : target.getInventory())
+//                dropActions.add(item.getDropAction(actor));
+//            for (Action drop : dropActions)
+//                drop.execute(target, map);
+//            // remove actor
+//            map.removeActor(target);
+//            result += System.lineSeparator() + target + " is killed.";
+//        }
+        return result;
     }
 
     /**
@@ -80,6 +113,9 @@ public class AttackKoopaAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " attacks " + target + " at " + direction;
+        if (target.isConscious()) {
+            return actor + " attacks " + target + " at " + direction;
+        }
+        return actor + " destroys Koopa (Dormant)";
     }
 }

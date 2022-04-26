@@ -2,7 +2,7 @@ package game.items;
 
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.behaviours.Buyable;
+import game.capabilities.Buyable;
 import game.enums.Status;
 
 /**

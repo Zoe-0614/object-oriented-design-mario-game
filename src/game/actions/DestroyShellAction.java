@@ -48,8 +48,7 @@ public class DestroyShellAction extends Action {
         Location location = map.locationOf(target);
         map.removeActor(target);
         location.addItem(new SuperMushroom());
-
-        return target  + "'s shell is destroyed, dropped a Super Mushroom!";
+        return target + "'s shell is destroyed, dropped a Super Mushroom!";
     }
 
     /**
@@ -61,6 +60,6 @@ public class DestroyShellAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return "Destroys " + target  + "'s shell at " + direction;
+        return actor + " destroys " + target  + "'s shell at " + direction;
     }
 }

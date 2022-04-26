@@ -8,8 +8,10 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.actions.AttackAction;
 import game.actions.SuicideAction;
 import game.enemies.Enemy;
+import game.enums.Status;
 import game.items.Coin;
 
 import java.util.Random;
@@ -27,6 +29,18 @@ public class Goomba extends Enemy {
         super("Goomba", 'g', 20, location);
     }
 
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        ActionList actions = new ActionList();
+
+        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            actions.add(new AttackAction(this, direction));
+            this.addCapability(Status.ENGAGED);
+        }
+
+        super.allowableActions(otherActor, direction, map);
+        return actions;
+    }
 
     /**
      * Figure out what to do next.
@@ -58,7 +72,7 @@ public class Goomba extends Enemy {
      */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(10, "kick");
+        return new IntrinsicWeapon(10, "kicks");
     }
 
 

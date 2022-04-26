@@ -53,7 +53,6 @@ public class AttackAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 		String result = "";
 		//determine whether the target is conscious (used when instant kill)
-		boolean conscious = true;
 		Weapon weapon = actor.getWeapon();
 
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
@@ -61,15 +60,19 @@ public class AttackAction extends Action {
 		}
 
 		if (actor.hasCapability(Status.INVINCIBLE)){
-			conscious = false;
-
-		} else {
+			target.resetMaxHp(0);
+			result = actor + " instantly kills " + target;
+		}
+		else if (target.hasCapability(Status.INVINCIBLE)) {
+			result = actor + " " + weapon.verb() + " " + target + " for 0 damage.";
+		}
+		else {
 			int damage = weapon.damage();
 			result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 			target.hurt(damage);
 		}
 
-		if (!target.isConscious() || !conscious) {
+		if (!target.isConscious()) {
 			ActionList dropActions = new ActionList();
 			// drop all items
 			for (Item item : target.getInventory())

@@ -8,6 +8,8 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.AttackAction;
+import game.actions.AttackKoopaAction;
+import game.actions.DestroyShellAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
@@ -62,14 +64,24 @@ public abstract class Enemy extends Actor implements Resettable {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
-        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-            actions.add(new AttackAction(this, direction));
-            this.addCapability(Status.ENGAGED);
-        }
+//        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+//            if (this.getDisplayChar() == 'g') {
+//                actions.add(new AttackAction(this, direction));
+//            }
+//            else if (this.getDisplayChar() == 'K' || this.getDisplayChar() == 'D') {
+//                actions.add(new AttackKoopaAction(this, direction));
+//            }
+//            this.addCapability(Status.ENGAGED);
+//        }
 
-        if (this.hasCapability(Status.ENGAGED)) {
-            behaviours.put(8, new AttackBehaviour(otherActor, direction));
-            behaviours.put(9, new FollowBehaviour(otherActor));
+        if (this.hasCapability(Status.ENGAGED) && otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) &&
+                map.locationOf(otherActor).getGround().getDisplayChar() != '_') {
+            behaviours.put(9, new AttackBehaviour(otherActor, direction));
+            behaviours.put(8, new FollowBehaviour(otherActor));
+        }
+        else {
+            behaviours.clear();
+            behaviours.put(10, new WanderBehaviour());
         }
         return actions;
     }

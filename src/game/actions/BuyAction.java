@@ -3,7 +3,8 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.behaviours.Buyable;
+import game.capabilities.Buyable;
+import game.enums.Status;
 
 public class BuyAction extends Action {
     private Buyable buyableItem;
@@ -16,8 +17,12 @@ public class BuyAction extends Action {
     public String execute(Actor actor, GameMap map) {
         boolean isBought;
         isBought = buyableItem.buy(actor);
-        if (isBought)
+        if (isBought) {
+            if (buyableItem.getItem().getDisplayChar() == 'w') {
+                actor.addCapability(Status.WRENCH);
+            }
             return menuDescription(actor);
+        }
         return "You do not have enough coins!";
     }
 

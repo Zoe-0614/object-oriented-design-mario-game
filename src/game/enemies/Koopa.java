@@ -12,8 +12,10 @@ import game.actions.AttackAction;
 import game.actions.AttackKoopaAction;
 import game.actions.DestroyShellAction;
 import game.behaviours.AttackBehaviour;
+import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.enums.Status;
+import game.items.SuperMushroom;
 
 /**
  * A reptilian mini-trooper.
@@ -27,6 +29,7 @@ public class Koopa extends Enemy {
     public Koopa(Location location) {
         super("Koopa", 'K', 100, location);
         this.addCapability(Status.NOT_DORMANT);
+        this.addItemToInventory(new SuperMushroom());
     }
 
     /**
@@ -42,14 +45,17 @@ public class Koopa extends Enemy {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
-        if (this.hasCapability(Status.NOT_DORMANT)) {
-            actions = super.allowableActions(otherActor, direction, map);
-        } else if (this.getDisplayChar() == 'D') {
-            if (otherActor.hasCapability(Status.WRENCH)) {
-                actions.add(new AttackKoopaAction(this, direction));
-            }
+
+        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            actions.add(new AttackKoopaAction(this, direction));
+            this.addCapability(Status.ENGAGED);
         }
+
+        super.allowableActions(otherActor, direction, map);
+        // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back
+//        if (otherActor.hasCapability(Status.WRENCH) || this.getDisplayChar() != 'D') {
+//            actions.add(new AttackKoopaAction(this, direction));
+//        }
         return actions;
     }
 
@@ -60,18 +66,18 @@ public class Koopa extends Enemy {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        super.playTurn(actions, lastAction, map, display);
         if (this.isConscious()) {
-            for (game.behaviours.Behaviour Behaviour : getBehaviours().values()) {
-                Action action = Behaviour.getAction(this, map);
-                if (action != null)
-                    return action;
-            }
+            return super.playTurn(actions, lastAction, map, display);
+//            for (game.behaviours.Behaviour Behaviour : getBehaviours().values()) {
+//                Action action = Behaviour.getAction(this, map);
+//                if (action != null)
+//                    return action;
+//            }
         } else {
             this.setDisplayChar('D');
             return new DoNothingAction();
         }
-        return new DoNothingAction();
+        //return new DoNothingAction();
     }
 
     /**
@@ -81,7 +87,7 @@ public class Koopa extends Enemy {
      */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(30, "punch");
+        return new IntrinsicWeapon(30, "punches");
     }
 
 
