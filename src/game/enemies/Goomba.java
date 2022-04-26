@@ -35,7 +35,7 @@ public class Goomba extends Enemy {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        super.playTurn(actions, lastAction, map, display);
+        Action action = super.playTurn(actions, lastAction, map, display);
 
         //10% chance: suicide
         Random random = new Random();
@@ -45,8 +45,7 @@ public class Goomba extends Enemy {
             new SuicideAction().execute(this, map, this.location);
         }
 
-
-        return new DoNothingAction();
+        return action;
     }
 
     /**
