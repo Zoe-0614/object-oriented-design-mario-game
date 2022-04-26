@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Player;
+import game.Wallet;
 import game.items.Coin;
 
 /**
@@ -36,7 +37,7 @@ public class PickUpCoinAction extends Action {
         Player player = (Player) actor;
         map.locationOf(actor).removeItem(coin);
         //Increase the balance of the player, need to use player object through actor
-        player.setBalance(player.getBalance()+20);
+        Wallet.addMoney(actor, coin.getValue());
         return menuDescription(player);
     }
 

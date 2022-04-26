@@ -10,7 +10,7 @@ public class Wallet {
 
     //Maps the Actor to their starting balance
     public static void addActor(Actor actor) {
-        balance.put(actor, 0);
+        balance.put(actor, 1000);
     }
 
     //Gets the player's money

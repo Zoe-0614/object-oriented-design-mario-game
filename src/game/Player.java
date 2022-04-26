@@ -17,8 +17,6 @@ import game.reset.Resettable;
 public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
-	private int balance;
-
 
 	/**
 	 * Constructor.
@@ -51,6 +49,9 @@ public class Player extends Actor implements Resettable {
 		System.out.println(name + hp +" at " + "(" + actorLocation.x() + "," + actorLocation.y() + ")");
 		//Wallet
 		System.out.println("Wallet: $"+ Wallet.getBalance(this));
+		if (this.hasCapability(Status.INVINCIBLE)) {
+			System.out.println(this.name + " IS INVINCIBLE!");
+		}
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
 	}
@@ -58,14 +59,6 @@ public class Player extends Actor implements Resettable {
 	@Override
 	public char getDisplayChar(){
 		return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar()): super.getDisplayChar();
-	}
-
-	public int getBalance() {
-		return balance;
-	}
-
-	public void setBalance(int balance) {
-		this.balance = balance;
 	}
 
 
