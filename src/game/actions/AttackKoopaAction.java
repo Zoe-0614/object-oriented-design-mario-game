@@ -83,19 +83,7 @@ public class AttackKoopaAction extends Action {
             }
         }
         else {
-           //Wrench wrench = new Wrench();
-//            List<Item> inventory = actor.getInventory();
-//            boolean hasWrench = false;
-//            for (int i = 0; i < inventory.size(); i++) {
-//                if (inventory.get(i).getDisplayChar() == 'w') {
-//                    hasWrench = true;
-//                }
-//            }
-//            if (hasWrench){
-            //if (actor.hasCapability(Status.WRENCH)) {
-                //wrench.getDropAction(actor);
                 result += new DestroyShellAction(target,map,direction).execute(target, map);
-//            }
         }
 
 //        if (!target.isConscious() && actor.hasCapability(Status.INVINCIBLE)) {

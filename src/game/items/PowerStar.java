@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
+import game.actions.ConsumePowerStarAction;
 import game.capabilities.Buyable;
 import game.grounds.Dirt;
 import game.enums.Status;
@@ -25,9 +26,10 @@ public class PowerStar extends MagicalItem implements Buyable {
      * Constructor.
      */
     public PowerStar() {
-        super("PowerStar", '*', true);
-        addAction(new ConsumeAction(this));
+        super("Power Star", '*', true);
+        addAction(new ConsumePowerStarAction(this));
         this.price = 600;
+        this.turn = 11;
     }
 
 
@@ -41,7 +43,6 @@ public class PowerStar extends MagicalItem implements Buyable {
     public void consumedBy(Actor actor, GameMap map) {
         actor.heal(200);
         actor.addCapability(Status.INVINCIBLE);
-        System.out.println(actor + " is INVINCIBLE!");
 
         tick(map.locationOf(actor), actor);
 
@@ -61,8 +62,6 @@ public class PowerStar extends MagicalItem implements Buyable {
      */
     @Override
     public void tick(Location location, Actor actor) {
-        turn = 10;
-        this.toString();
         turn--;
         if (turn == 0) {
             actor.removeCapability(Status.INVINCIBLE);
@@ -78,8 +77,6 @@ public class PowerStar extends MagicalItem implements Buyable {
      */
     @Override
     public void tick(Location location) {
-        turn = 10;
-        this.toString();
         turn--;
         if (turn == 0) {
             location.removeItem(this);
@@ -91,10 +88,10 @@ public class PowerStar extends MagicalItem implements Buyable {
      *
      * @return a string, e.g. "Power Star - 10 turns remaining"
      */
-    @Override
-    public String toString() {
-        return super.toString() + " - " + turn + " turns remaining";
-    }
+//    @Override
+//    public String toString() {
+//        return super.toString() + " - " + turn + " turns remaining";
+//    }
 
 
     @Override
@@ -105,5 +102,9 @@ public class PowerStar extends MagicalItem implements Buyable {
     @Override
     public Item getItem() {
         return this;
+    }
+
+    public int getTurn() {
+        return turn;
     }
 }

@@ -50,6 +50,6 @@ public class PickUpCoinAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " picks up the " + coin;
+        return actor + " picks up the " + coin + " ($" + coin.getValue() + ")";
     }
 }

@@ -55,6 +55,7 @@ public class Application {
 			Actor mario = new Player("Mario", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 10));
 			gameMap.at(43, 8).addActor(new Koopa(gameMap.at(43, 8)));
+			gameMap.at(43, 10).addItem(new PowerStar());
 
 			//add enemies randomly
 			if(Math.random() <= 0.1){
