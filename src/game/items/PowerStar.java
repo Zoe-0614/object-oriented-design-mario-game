@@ -46,11 +46,11 @@ public class PowerStar extends MagicalItem implements Buyable {
 
         tick(map.locationOf(actor), actor);
 
-        Ground ground = map.locationOf(actor).getGround();
-        if (!(ground.getDisplayChar() == '.')) {
-            map.locationOf(actor).setGround(new Dirt());
-            map.locationOf(actor).addItem((new Coin(5)));
-        }
+//        Ground ground = map.locationOf(actor).getGround();
+//        if (!(ground.getDisplayChar() == '.' || ground.getDisplayChar() == '_')) {
+//            map.locationOf(actor).setGround(new Dirt());
+//            map.locationOf(actor).addItem((new Coin(5)));
+//        }
     }
 
     /**

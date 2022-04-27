@@ -6,8 +6,12 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.actions.PickUpCoinAction;
 import game.enums.Status;
+import game.grounds.Dirt;
+import game.items.Coin;
 import game.reset.ResetAction;
 import game.reset.Resettable;
 
@@ -56,6 +60,13 @@ public class Player extends Actor implements Resettable {
 		else if (this.hasCapability(Status.INVINCIBLE)) {
 			System.out.println(this.name + " IS INVINCIBLE! (" + invincibleTimer + " turns left)");
 			invincibleTimer--;
+			Ground ground = map.locationOf(this).getGround();
+			if (!(ground.getDisplayChar() == '.' || ground.getDisplayChar() == '_')) {
+				map.locationOf(this).setGround(new Dirt());
+				Coin coin = new Coin(5);
+				map.locationOf(this).addItem(coin);
+				actions.add(new PickUpCoinAction(coin));
+			}
 		}
 
 		if (invincibleTimer == 0) {
