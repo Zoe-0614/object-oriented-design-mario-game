@@ -2,9 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.FancyGroundFactory;
-import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.World;
+import edu.monash.fit2099.engine.positions.*;
 import game.enemies.Koopa;
 import game.grounds.Dirt;
 import game.grounds.Floor;
@@ -52,23 +50,31 @@ public class Application {
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
 
+			for (int x : gameMap.getXRange()) {
+				for (int y : gameMap.getYRange()) {
+					Location groundLocation = gameMap.at(x, y);
+					groundLocation.getGround().tick(groundLocation);
+				}
+			}
+
 			Actor mario = new Player("Mario", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 10));
 			gameMap.at(43, 8).addActor(new Koopa(gameMap.at(43, 8)));
 			gameMap.at(43, 10).addItem(new PowerStar());
+			gameMap.at(41, 10).addItem(new SuperMushroom());
 
-			//add enemies randomly
-			if(Math.random() <= 0.1){
-				int x = (int)Math.random() * 100;
-				int y = (int)Math.random() * 100;
-				world.addPlayer(new Koopa(gameMap.at(x,y)), gameMap.at(x,y));
-			}
+//			//add enemies randomly
+//			if(Math.random() <= 0.1){
+//				int x = (int)Math.random() * 100;
+//				int y = (int)Math.random() * 100;
+//				world.addPlayer(new Koopa(gameMap.at(x,y)), gameMap.at(x,y));
+//			}
 			gameMap.at(42, 11).addActor(new Toad());
 
-		if(Math.random() <= 0.8){
-			gameMap.at((int)Math.random() * 100, (int)Math.random() * 100).addItem(new PowerStar());
-			gameMap.at((int)Math.random() * 100, (int)Math.random() * 100).addItem(new SuperMushroom());
-		}
+//		if(Math.random() <= 0.8){
+//			gameMap.at((int)Math.random() * 100, (int)Math.random() * 100).addItem(new PowerStar());
+//			gameMap.at((int)Math.random() * 100, (int)Math.random() * 100).addItem(new SuperMushroom());
+//		}
 
 
 			world.run();

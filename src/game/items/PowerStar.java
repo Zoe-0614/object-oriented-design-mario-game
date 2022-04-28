@@ -42,7 +42,12 @@ public class PowerStar extends MagicalItem implements Buyable {
     @Override
     public void consumedBy(Actor actor, GameMap map) {
         actor.heal(200);
-        actor.addCapability(Status.INVINCIBLE);
+        if (actor.hasCapability(Status.INVINCIBLE)) {
+            actor.addCapability(Status.ALREADY_INVINCIBLE);
+        }
+        else {
+            actor.addCapability(Status.INVINCIBLE);
+        }
 
         tick(map.locationOf(actor), actor);
 
@@ -64,7 +69,7 @@ public class PowerStar extends MagicalItem implements Buyable {
     public void tick(Location location, Actor actor) {
         turn--;
         if (turn == 0) {
-            actor.removeCapability(Status.INVINCIBLE);
+            //actor.removeCapability(Status.INVINCIBLE);
             actor.removeItemFromInventory(this);
         }
     }

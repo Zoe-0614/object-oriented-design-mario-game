@@ -3,6 +3,7 @@ package game.reset;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.enums.Status;
 
 /**
  * Special Action to reset the game
@@ -25,6 +26,7 @@ public class ResetAction extends Action {
     public String execute(Actor actor, GameMap map) {
         resetManager = ResetManager.getInstance();
         resetManager.run();
+        actor.addCapability(Status.RESET);
         return "GAME is reset";
     }
 

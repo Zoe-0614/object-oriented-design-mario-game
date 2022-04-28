@@ -2,16 +2,19 @@ package game.items;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
 import game.actions.PickUpCoinAction;
 import game.reset.Resettable;
 
 public class Coin extends Item implements Resettable {
     private int value;
-    public Coin(int value){
+    private Location location;
+
+    public Coin(int value, Location location){
         super("Coin",'$',false);
         this.value = value;
-        Action action = new PickUpCoinAction(this);
-        addAction(action);
+        this.location = location;
+        addAction(new PickUpCoinAction(this));
         registerInstance();
     }
 
@@ -21,6 +24,6 @@ public class Coin extends Item implements Resettable {
 
     @Override
     public void resetInstance() {
-
+        location.removeItem(this);
     }
 }

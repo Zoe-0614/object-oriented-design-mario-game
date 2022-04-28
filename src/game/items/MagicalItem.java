@@ -2,6 +2,7 @@ package game.items;
 
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.DropItemAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 
@@ -10,7 +11,6 @@ import edu.monash.fit2099.engine.positions.GameMap;
  *
  */
 public abstract class MagicalItem extends Item {
-
     /***
      * Constructor.
      *  @param name the name of this Item
@@ -21,6 +21,10 @@ public abstract class MagicalItem extends Item {
         super(name, displayChar, portable);
     }
 
+    @Override
+    public DropItemAction getDropAction(Actor actor) {
+        return null;
+    }
 
     /**
      * An abstract method to execute the features after an Actor consumed the Magical Items

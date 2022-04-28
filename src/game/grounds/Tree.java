@@ -13,6 +13,8 @@ import java.util.Random;
 
 abstract public class Tree extends Ground implements JumpCapable, Resettable, SpawnCapable {
     protected int age;
+    protected Location location;
+
     /**
      * Constructor.
      *
@@ -20,6 +22,7 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
     public Tree(char displayChar,int age) {
         super(displayChar);
         this.age=(age);
+        registerInstance();
     }
 
     @Override
@@ -33,7 +36,8 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
     //For the trees to grow
     public void tick(Location location){
         super.tick(location);
-        age ++;
+        this.location = location;
+        age++;
 //        System.out.println("age:"+age);
         if (age == 10){
             location.setGround(new Sapling());
@@ -53,8 +57,8 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
     @Override
     public void resetInstance() {
         int rand = new Random().nextInt(2);
-        if(rand == 0){
-
+        if (rand == 0) {
+            location.setGround(new Dirt());
         }
     }
 

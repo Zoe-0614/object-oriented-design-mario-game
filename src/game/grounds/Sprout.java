@@ -15,7 +15,7 @@ public class Sprout extends Tree{
     private int chance;
 
     public Sprout(){
-        super('+',0);
+        super('+',-1);
         this.damage = 10;
         this.chance = 90;
     }

@@ -22,6 +22,7 @@ public class Player extends Actor implements Resettable {
 
 	private final Menu menu = new Menu();
 	private int invincibleTimer;
+	private boolean resetState;
 
 	/**
 	 * Constructor.
@@ -32,6 +33,7 @@ public class Player extends Actor implements Resettable {
 	 */
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
+		this.invincibleTimer = 10;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.ISPLAYER);
 		//test for talking to toad
@@ -39,6 +41,7 @@ public class Player extends Actor implements Resettable {
 //		addItemToInventory(new Wrench());
 		Wallet.addActor(this);
 		registerInstance();
+		resetState = false;
 	}
 
 	@Override
@@ -46,24 +49,26 @@ public class Player extends Actor implements Resettable {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-		actions.add(new ResetAction());
+		if (!this.hasCapability(Status.RESET)) {
+			actions.add(new ResetAction());
+		}
 		String hp = printHp();
 		Location actorLocation = map.locationOf(this);
-
 		//Player Status
 		System.out.println(name + hp +" at " + "(" + actorLocation.x() + "," + actorLocation.y() + ")");
 		//Wallet
 		System.out.println("Wallet: $"+ Wallet.getBalance(this));
-		if (!this.hasCapability(Status.INVINCIBLE)) {
-			invincibleTimer = 10;
-		}
-		else if (this.hasCapability(Status.INVINCIBLE)) {
+		if (this.hasCapability(Status.INVINCIBLE)) {
+			if (this.hasCapability(Status.ALREADY_INVINCIBLE)) {
+				invincibleTimer = 10;
+				this.removeCapability(Status.ALREADY_INVINCIBLE);
+			}
 			System.out.println(this.name + " IS INVINCIBLE! (" + invincibleTimer + " turns left)");
 			invincibleTimer--;
 			Ground ground = map.locationOf(this).getGround();
 			if (!(ground.getDisplayChar() == '.' || ground.getDisplayChar() == '_')) {
 				map.locationOf(this).setGround(new Dirt());
-				Coin coin = new Coin(5);
+				Coin coin = new Coin(5, actorLocation);
 				map.locationOf(this).addItem(coin);
 				actions.add(new PickUpCoinAction(coin));
 			}
@@ -88,5 +93,4 @@ public class Player extends Actor implements Resettable {
 		this.removeCapability(Status.INVINCIBLE);
 		this.removeCapability(Status.TALL);
 	}
-
 }
