@@ -15,10 +15,16 @@ import java.util.Random;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
+/**
+ * Class representing Mature
+ */
 public class Mature extends Tree {
     private int damage;
     private int chance;
 
+    /**
+     * Constructor
+     */
     public Mature(){
         super('T',20);
         this.damage = 30;
@@ -88,6 +94,12 @@ public class Mature extends Tree {
         }
 
     }
+
+    /**
+     *  Counts the number of dirt available around the tree
+     * @param location location of the tree
+     * @return the number dirt available in the surrounding area of the tree
+     */
     //Calculate the dirtCount in the surrounding area
     public int countDirt(Location location){
 //      From -1,0,1 (Surrounding Space)

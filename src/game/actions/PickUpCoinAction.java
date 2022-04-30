@@ -8,7 +8,7 @@ import game.Wallet;
 import game.items.Coin;
 
 /**
- * Action to allow items to be picked up.
+ * Action to allow coins to be picked up.
  */
 public class PickUpCoinAction extends Action {
 
@@ -24,7 +24,7 @@ public class PickUpCoinAction extends Action {
     }
 
     /**
-     * Add the item to the actor's inventory.
+     * Adds the coin to the actor's balance.
      *
      * @see Action#execute(Actor, GameMap)
      * @param actor The actor performing the action.

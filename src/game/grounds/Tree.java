@@ -16,8 +16,9 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
     protected Location location;
 
     /**
-     * Constructor.
-     *
+     * Constructor
+     * @param displayChar the character to use to represent this item if it is on the ground
+     * @param age age of the tree
      */
     public Tree(char displayChar,int age) {
         super(displayChar);
@@ -33,6 +34,10 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
         return false;
     }
 
+    /**
+     * Tree grows every age
+     * @param location The location of the Ground
+     */
     //For the trees to grow
     public void tick(Location location){
         super.tick(location);

@@ -11,10 +11,16 @@ import game.items.Coin;
 
 import java.util.Random;
 
+/**
+ * Class representing Sapling
+ */
 public class Sapling extends Tree {
     private int damage;
     private int chance;
 
+    /**
+     * Constructor
+     */
     public Sapling(){
         super('t',10);
         this.damage = 20;

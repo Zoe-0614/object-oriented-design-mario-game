@@ -4,6 +4,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 
 import java.util.HashMap;
 
+/**
+ * Class representing the number of coins the player has
+ */
+
 public class Wallet {
     //Class variable
     private static HashMap<Actor, Integer> balance = new HashMap<>();
@@ -22,6 +26,11 @@ public class Wallet {
         }
     }
 
+    /**
+     * Money increased after Player picks up the coin
+     * @param actor the Player
+     * @param money The amount of money the player has gained
+     */
     //Getting the balance from the Actor and then adding the money
     public static void addMoney(Actor actor, int money) {
         int currBalance;
@@ -34,6 +43,12 @@ public class Wallet {
         balance.put(actor, newBalance);
     }
 
+    /**
+     * Money decreased after Player uses it.
+     *
+     * @param actor the Player
+     * @param money The amount of money the player has used
+     */
     public static void deductMoney(Actor actor, int money) {
         int currBalance;
         if (balance.containsKey(actor)) {

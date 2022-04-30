@@ -10,10 +10,16 @@ import game.enums.Status;
 
 import java.util.Random;
 
+/**
+ * Class representing Sprout
+ */
 public class Sprout extends Tree{
     private int damage;
     private int chance;
 
+    /**
+     * Constructor
+     */
     public Sprout(){
         super('+',-1);
         this.damage = 10;

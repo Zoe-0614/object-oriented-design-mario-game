@@ -13,13 +13,19 @@ import game.items.PowerStar;
 import game.items.SuperMushroom;
 import game.items.Wrench;
 
+/**
+ * Class representing Toad
+ */
 public class Toad extends Actor {
 
-
+    /**
+     * Constructor
+     */
     public Toad(){
         super("Toad",'O',100);
 
     }
+
 
     //Add an action that allows talking to toad
     @Override

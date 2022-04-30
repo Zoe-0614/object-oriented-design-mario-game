@@ -17,6 +17,10 @@ public class TalkingAction extends Action {
     protected Random random = new Random();
     protected ArrayList<String> talkList = new ArrayList<>();
 
+    /**
+     * Constructor
+     * @param target Toad
+     */
     public TalkingAction(Actor target){
         this.target=target;
         talkList.add("You might need a wrench to smash Koopa's hard shells");
@@ -25,6 +29,12 @@ public class TalkingAction extends Action {
         talkList.add("Being imprisoned in these walls can drive a fungus crazy :(");
     }
 
+    /**
+     * When the player talks to toad
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return random sentence that Toad will speak
+     */
     public String execute(Actor actor, GameMap map){
         ArrayList<String> newTalk = new ArrayList<>(talkList);
         List<Item> inventory = actor.getInventory();
