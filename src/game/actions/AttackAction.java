@@ -70,6 +70,9 @@ public class AttackAction extends Action {
 			int damage = weapon.damage();
 			result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 			target.hurt(damage);
+			if (target.hasCapability(Status.HOSTILE_TO_ENEMY) && target.hasCapability(Status.TALL)) {
+				target.removeCapability(Status.TALL);
+			}
 		}
 
 		if (!target.isConscious()) {
