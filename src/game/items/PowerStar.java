@@ -21,15 +21,16 @@ public class PowerStar extends MagicalItem implements Buyable {
      */
     private int turn;
     private int price;
+    private boolean justPickedUp;
 
     /***
      * Constructor.
      */
     public PowerStar() {
         super("Power Star", '*', true);
-        addAction(new ConsumePowerStarAction(this));
         this.price = 600;
         this.turn = 11;
+        this.justPickedUp = false;
     }
 
 
@@ -68,6 +69,10 @@ public class PowerStar extends MagicalItem implements Buyable {
     @Override
     public void tick(Location location, Actor actor) {
         turn--;
+        if (!justPickedUp) {
+            addAction(new ConsumePowerStarAction(this));
+            justPickedUp = true;
+        }
         if (turn == 0) {
             //actor.removeCapability(Status.INVINCIBLE);
             actor.removeItemFromInventory(this);

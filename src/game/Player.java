@@ -63,7 +63,7 @@ public class Player extends Actor implements Resettable {
 				invincibleTimer = 10;
 				this.removeCapability(Status.ALREADY_INVINCIBLE);
 			}
-			System.out.println(this.name + " IS INVINCIBLE! (" + invincibleTimer + " turns left)");
+			System.out.println(this.name + " IS INVINCIBLE!");
 			invincibleTimer--;
 			Ground ground = map.locationOf(this).getGround();
 			if (!(ground.getDisplayChar() == '.' || ground.getDisplayChar() == '_')) {
