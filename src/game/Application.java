@@ -62,20 +62,7 @@ public class Application {
 			gameMap.at(43, 8).addActor(new Koopa(gameMap.at(43, 8)));
 			gameMap.at(43, 10).addItem(new PowerStar());
 			gameMap.at(41, 10).addItem(new SuperMushroom());
-
-//			//add enemies randomly
-//			if(Math.random() <= 0.1){
-//				int x = (int)Math.random() * 100;
-//				int y = (int)Math.random() * 100;
-//				world.addPlayer(new Koopa(gameMap.at(x,y)), gameMap.at(x,y));
-//			}
 			gameMap.at(42, 11).addActor(new Toad());
-
-//		if(Math.random() <= 0.8){
-//			gameMap.at((int)Math.random() * 100, (int)Math.random() * 100).addItem(new PowerStar());
-//			gameMap.at((int)Math.random() * 100, (int)Math.random() * 100).addItem(new SuperMushroom());
-//		}
-
 
 			world.run();
 
