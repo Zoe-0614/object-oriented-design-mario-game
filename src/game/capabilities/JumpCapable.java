@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import java.util.Random;
 
 /**
- * JumpCapable is an interface where class that can be jumped to can implement.
+ * JumpCapable is an interface where classes that can be jumped to can implement.
  *
  * @author Chua Shin Herh
  * @version 1.0
