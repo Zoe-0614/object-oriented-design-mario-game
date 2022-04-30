@@ -26,7 +26,7 @@ public class TalkingAction extends Action {
     }
 
     public String execute(Actor actor, GameMap map){
-        ArrayList<String> newToadTalk = new ArrayList<>(talkList);
+        ArrayList<String> newTalk = new ArrayList<>(talkList);
         List<Item> inventory = actor.getInventory();
         boolean hasWrench = false;
         for (int i = 0; i < inventory.size(); i++) {
@@ -38,23 +38,23 @@ public class TalkingAction extends Action {
         //If actor has wrench powerstar
         //actor.getWeapon == null is wrong cause there is always fists
         if (hasWrench && (actor.hasCapability(Status.INVINCIBLE))) {
-            newToadTalk.remove(1);
-            newToadTalk.remove(0);
+            newTalk.remove(1);
+            newTalk.remove(0);
         }
         //If actor has Power Star ONLY
         else if((actor.hasCapability(Status.INVINCIBLE))){
-            newToadTalk.remove(1); 
+            newTalk.remove(1);
         }
         //has wrench only
         else if (hasWrench){
-            newToadTalk.remove(0);
+            newTalk.remove(0);
         }
-        int toadIndex = random.nextInt(newToadTalk.size());
+        int toadIndex = random.nextInt(newTalk.size());
 //        Testing to talk to toad
 //        System.out.println("ToadTalksize" +newToadTalk.size());
 //        System.out.println("ArrayList" +newToadTalk);
 //        System.out.println("Toad index"+toadIndex);
-        return newToadTalk.get(toadIndex);
+        return newTalk.get(toadIndex);
 
     }
 
