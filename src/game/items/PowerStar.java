@@ -17,10 +17,16 @@ import game.enums.Status;
 
 public class PowerStar extends MagicalItem implements Buyable {
     /***
-     * Indicate the remaining turn of Power Star
+     * Indicate the remaining turns of the Power Star
      */
     private int turn;
+    /***
+     * Indicate the price of the Power Star
+     */
     private int price;
+    /***
+     * Determine whether the Power Star is just being picked up
+     */
     private boolean justPickedUp;
 
     /***
@@ -52,11 +58,6 @@ public class PowerStar extends MagicalItem implements Buyable {
 
         tick(map.locationOf(actor), actor);
 
-//        Ground ground = map.locationOf(actor).getGround();
-//        if (!(ground.getDisplayChar() == '.' || ground.getDisplayChar() == '_')) {
-//            map.locationOf(actor).setGround(new Dirt());
-//            map.locationOf(actor).addItem((new Coin(5)));
-//        }
     }
 
     /**
@@ -74,13 +75,12 @@ public class PowerStar extends MagicalItem implements Buyable {
             justPickedUp = true;
         }
         if (turn == 0) {
-            //actor.removeCapability(Status.INVINCIBLE);
             actor.removeItemFromInventory(this);
         }
     }
 
     /**
-     * Inform Power Star of the passage of time.
+     * Inform Power Star on the ground of the passage of time.
      *
      * This method is called once per turn.
      * @param location The location of the Power Star if it is on the ground.
@@ -103,17 +103,31 @@ public class PowerStar extends MagicalItem implements Buyable {
 //        return super.toString() + " - " + turn + " turns remaining";
 //    }
 
-
+    /**
+     * Get the price of PowerStar
+     *
+     * @return an integer, indicating the price of the Power Star
+     */
     @Override
     public int getPrice() {
         return price;
     }
 
+    /**
+     * Get the Power Star
+     *
+     * @return an Item, returning this item(Power Star in this case)
+     */
     @Override
     public Item getItem() {
         return this;
     }
 
+    /**
+     * Get the turns remaining for the PowerStar
+     *
+     * @return an integer, indicating the remaining turns left of the Power Star
+     */
     public int getTurn() {
         return turn;
     }

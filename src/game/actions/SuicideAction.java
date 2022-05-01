@@ -3,7 +3,6 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 
 /**
  * Special Action for Suicide (Cleaning the Gamemap).
@@ -19,7 +18,7 @@ public class SuicideAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         map.removeActor(actor);
-        return "Goomba is cleared from the map";
+        return actor + " is cleared from the map";
     }
 
     @Override

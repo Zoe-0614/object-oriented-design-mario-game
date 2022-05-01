@@ -65,14 +65,6 @@ public class AttackKoopaAction extends Action {
             }
 
             if (actor.hasCapability(Status.INVINCIBLE)) {
-//                ActionList dropActions = new ActionList();
-//                // drop all items
-//                for (Item item : target.getInventory())
-//                    dropActions.add(item.getDropAction(actor));
-//                for (Action drop : dropActions)
-//                    drop.execute(target, map);
-//                // remove actor
-//                map.removeActor(target);
                 result += actor + " instantly kills " + target;
                 result += System.lineSeparator() + new DestroyShellAction(target, map, direction).execute(target, map);
             }
@@ -86,17 +78,6 @@ public class AttackKoopaAction extends Action {
                 result += new DestroyShellAction(target,map,direction).execute(target, map);
         }
 
-//        if (!target.isConscious() && actor.hasCapability(Status.INVINCIBLE)) {
-//            ActionList dropActions = new ActionList();
-//            // drop all items
-//            for (Item item : target.getInventory())
-//                dropActions.add(item.getDropAction(actor));
-//            for (Action drop : dropActions)
-//                drop.execute(target, map);
-//            // remove actor
-//            map.removeActor(target);
-//            result += System.lineSeparator() + target + " is killed.";
-//        }
         return result;
     }
 
@@ -112,7 +93,6 @@ public class AttackKoopaAction extends Action {
         if (target.isConscious()) {
             return actor + " attacks " + target + " at " + direction;
         }
-        //else if (!target.isConscious() && )
         return actor + " destroys Koopa (Dormant)";
     }
 }

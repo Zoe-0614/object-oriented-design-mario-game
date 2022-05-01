@@ -35,11 +35,11 @@ public class ConsumeAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-//        if (map.locationOf(actor).getItems().contains(magicalItem)){
-//            map.locationOf(actor).removeItem(magicalItem);
-//        } else if (actor.getInventory().contains(magicalItem)){
-//        actor.removeItemFromInventory(magicalItem);
-//    }
+        if (map.locationOf(actor).getItems().contains(magicalItem)){
+            map.locationOf(actor).removeItem(magicalItem);
+        } else if (actor.getInventory().contains(magicalItem)){
+        actor.removeItemFromInventory(magicalItem);
+    }
         magicalItem.consumedBy(actor, map);
         return menuDescription(actor);
     }

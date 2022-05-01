@@ -35,12 +35,21 @@ public class SuperMushroom extends MagicalItem implements Buyable {
         actor.increaseMaxHp(50);
     }
 
-
+    /**
+     * Get the price of SuperMushroom
+     *
+     * @return an integer, indicating the price of the Super Mushroom
+     */
     @Override
     public int getPrice() {
         return price;
     }
 
+    /**
+     * Get the SuperMushroom
+     *
+     * @return an Item, returning this item(SuperMushroom in this case)
+     */
     @Override
     public Item getItem() {
         return this;
