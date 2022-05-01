@@ -62,6 +62,7 @@ public class PowerStar extends MagicalItem implements Buyable {
 
     /**
      * Inform Power Star of the passage of time.
+     * Add ConsumePowerStarAction to Power Star's allowable Action
      *
      * This method is called once per turn after being consumed.
      * @param location The location of the actor that consumed the Power Star.
