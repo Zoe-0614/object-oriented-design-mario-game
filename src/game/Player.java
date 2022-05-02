@@ -36,9 +36,7 @@ public class Player extends Actor implements Resettable {
 		this.invincibleTimer = 10;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.ISPLAYER);
-		//test for talking to toad
-//		this.addCapability(Status.INVINCIBLE);
-//		addItemToInventory(new Wrench());
+
 		Wallet.addActor(this);
 		registerInstance();
 		resetState = false;
