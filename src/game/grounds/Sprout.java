@@ -32,7 +32,7 @@ public class Sprout extends Tree{
      * @param actor the Actor acting
      * @param location the current Location
      * @param direction the direction of the Ground from the Actor
-     * @return
+     * @return list of actions
      */
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         if (direction.equals("")) {
