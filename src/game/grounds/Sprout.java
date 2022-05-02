@@ -75,16 +75,6 @@ public class Sprout extends Tree{
         return chance;
     }
 
-    @Override
-    public void resetInstance() {
-        super.resetInstance();
-    }
-
-    @Override
-    public void registerInstance() {
-        super.registerInstance();
-    }
-
     /**
      * Has a chance to spawn a goomba at the Sprout
      * @param location of the Sprout
