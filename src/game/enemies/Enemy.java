@@ -79,7 +79,12 @@ public abstract class Enemy extends Actor implements Resettable {
     /**
      * Figure out what to do next.
      *
+     * @param actions a list of actions
+     * @param lastAction the last action of the action list
+     * @param map the game map the enemy is at
+     * @param display display
      * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+     * @return actions
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
@@ -102,6 +107,10 @@ public abstract class Enemy extends Actor implements Resettable {
         behaviours.put(priority, behaviour);
     }
 
+    /**
+     * Get behaviours from the behaviours TreeMap.
+     * @return behaviours
+     */
     public Map<Integer, Behaviour> getBehaviours() {
         return behaviours;
     }

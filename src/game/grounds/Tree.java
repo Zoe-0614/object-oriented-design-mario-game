@@ -26,6 +26,14 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
         registerInstance();
     }
 
+    /**
+     * Returns true if an Actor can enter this location.
+     *
+     * Actors can enter a location if the terrain is passable and there isn't an Actor there already.
+     * Game rule. One actor per location.
+     * @param actor the Actor who might be moving
+     * @return true if the Actor can enter this location
+     */
     @Override
     public boolean canActorEnter(Actor actor) {
         if (actor.hasCapability(Status.INVINCIBLE)) {
@@ -58,7 +66,9 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
 
     }
 
-
+    /**
+     * Reset capabilities, attributes of the tree.
+     */
     @Override
     public void resetInstance() {
         int rand = new Random().nextInt(2);

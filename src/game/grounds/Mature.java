@@ -31,6 +31,7 @@ public class Mature extends Tree {
         this.chance = 70;
     }
 
+
     @Override
     public void drop(Location location) {
         Random random = new Random();
@@ -82,17 +83,12 @@ public class Mature extends Tree {
 
                     isTree = false;
                 }
-
-
-
-
             }
         }
 //        20% to wither and die(become dirt)
         if (prob < 20){
             location.setGround(new Dirt());
         }
-
     }
 
     /**
@@ -159,6 +155,11 @@ public class Mature extends Tree {
         }
     }
 
+    /**
+     * Return the name of the ground
+     *
+     * @return a string, "Mature"
+     */
     @Override
     public String getName() {
         return "Mature";

@@ -45,7 +45,12 @@ public class Goomba extends Enemy {
     /**
      * Figure out what to do next.
      *
+     * @param actions a list of actions
+     * @param lastAction the last action of the action list
+     * @param map the game map the Goomba is at
+     * @param display display
      * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+     * @return actions
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {

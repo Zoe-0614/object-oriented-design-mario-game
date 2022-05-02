@@ -45,6 +45,11 @@ public class Sprout extends Tree{
         return actionList;
     }
 
+    /**
+     * Return the name of the ground
+     *
+     * @return a string, "Sprout"
+     */
     @Override
     public String getName() {
         return "Sprout";

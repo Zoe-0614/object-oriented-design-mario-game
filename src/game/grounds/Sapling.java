@@ -26,6 +26,9 @@ public class Sapling extends Tree {
         this.damage = 20;
         this.chance = 80;
     }
+
+
+
     @Override
     public void drop(Location location){
         Random random = new Random();
@@ -57,16 +60,27 @@ public class Sapling extends Tree {
         return actionList;
     }
 
+    /**
+     * Return the name of the ground
+     *
+     * @return a string, "Sapling"
+     */
     @Override
     public String getName() {
         return "Sapling";
     }
 
+    /**
+     * @return
+     */
     @Override
     public int getDamage() {
         return damage;
     }
 
+    /**
+     * @return
+     */
     @Override
     public int getChance() {
         return chance;

@@ -47,6 +47,16 @@ public class Toad extends Actor {
         return actions;
     }
 
+    /**
+     * Figure out what to do next.
+     *
+     * @param actions a list of actions
+     * @param lastAction the last action of the action list
+     * @param map the game map the Toad is at
+     * @param display display
+     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+     * @return actions, DoNothingAction in this case
+     */
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display){
         return new DoNothingAction();
 

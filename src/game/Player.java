@@ -44,6 +44,16 @@ public class Player extends Actor implements Resettable {
 		resetState = false;
 	}
 
+	/**
+	 * Figure out what to do next.
+	 *
+	 * @param actions a list of actions
+	 * @param lastAction the last action of the action list
+	 * @param map the game map the player is at
+	 * @param display display
+	 * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+	 * @return actions
+	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
@@ -81,12 +91,18 @@ public class Player extends Actor implements Resettable {
 		return menu.showMenu(this, actions, display);
 	}
 
+	/**Get the display character of the player
+	 *
+	 * @return a character that will be displayed on the game console
+	 */
 	@Override
 	public char getDisplayChar(){
 		return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar()): super.getDisplayChar();
 	}
 
-
+	/**
+	 * Reset capabilities, attributes of the player.
+	 */
 	@Override
 	public void resetInstance() {
 		this.resetMaxHp(this.getMaxHp());
