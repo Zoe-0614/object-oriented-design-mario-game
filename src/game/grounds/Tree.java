@@ -22,7 +22,7 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
      */
     public Tree(char displayChar,int age) {
         super(displayChar);
-        this.age=(age);
+        this.age = age;
         registerInstance();
     }
 
@@ -61,8 +61,9 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
 //            System.out.println("Successfully set ground to Mature");
         }
         //After every tick, drop goomba, koopa etc
-        drop(location);
-
+        if (age > 0) {
+            drop(location);
+        }
 
     }
 

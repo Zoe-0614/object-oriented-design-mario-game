@@ -14,7 +14,7 @@ public class Wallet {
 
     //Maps the Actor to their starting balance
     public static void addActor(Actor actor) {
-        balance.put(actor, 2000);
+        balance.put(actor, 0);
     }
 
     /**
