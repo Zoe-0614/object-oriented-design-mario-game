@@ -28,7 +28,11 @@ public class Sapling extends Tree {
     }
 
 
-
+    /**
+     * To spawn items when certain conditions are met
+     *
+     * @param location the location of the Sapling
+     */
     @Override
     public void drop(Location location){
         Random random = new Random();
@@ -47,7 +51,7 @@ public class Sapling extends Tree {
      * @param actor the Actor acting
      * @param location the current Location
      * @param direction the direction of the Ground from the Actor
-     * @return
+     * @return action list
      */
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         if (direction.equals("")) {
@@ -71,9 +75,9 @@ public class Sapling extends Tree {
     }
 
     /**
-     * Return the damage value of Sapling
+     * Return the damage value if the actor fails to jump on the Sapling
      *
-     * @return an integer, indicating the damage value of the Sapling
+     * @return an integer, indicating the damage value
      */
     @Override
     public int getDamage() {
@@ -81,7 +85,7 @@ public class Sapling extends Tree {
     }
 
     /**
-     *
+     * Return the chance for jump to succeed
      *
      * @return an integer, indicating the chance
      */

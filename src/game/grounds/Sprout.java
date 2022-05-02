@@ -32,7 +32,7 @@ public class Sprout extends Tree{
      * @param actor the Actor acting
      * @param location the current Location
      * @param direction the direction of the Ground from the Actor
-     * @return
+     * @return action list
      */
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         if (direction.equals("")) {
@@ -55,26 +55,31 @@ public class Sprout extends Tree{
         return "Sprout";
     }
 
+    /**
+     * Return the damage value if the actor fails to jump on the Sprout
+     *
+     * @return an integer, indicating the damage value
+     */
     @Override
     public int getDamage() {
         return damage;
     }
 
+    /**
+     * Return the chance for jump to succeed
+     *
+     * @return an integer, indicating the chance
+     */
     @Override
     public int getChance() {
         return chance;
     }
 
-    @Override
-    public void resetInstance() {
-        super.resetInstance();
-    }
-
-    @Override
-    public void registerInstance() {
-        super.registerInstance();
-    }
-
+    /**
+     * To spawn items when certain conditions are met
+     *
+     * @param location the location of the Sprout
+     */
     @Override
     public void drop(Location location) {
         //Add Goomba (10% to spawn)
