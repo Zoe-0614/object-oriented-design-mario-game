@@ -74,7 +74,7 @@ public class Wall extends Ground implements JumpCapable {
 
 	/**
 	 * Returns the damage value of the Wall
-	 * @return an integer, indicating the damage value of the Wall
+	 * @return the damage of failing the jump
 	 */
 	@Override
 	public int getDamage() {
@@ -83,7 +83,7 @@ public class Wall extends Ground implements JumpCapable {
 
 	/**
 	 * Returns the chance value of the wall
-	 * @return an integer, indicating the chance value of the wall
+	 * @return the chance of succeeding the jump
 	 */
 	@Override
 	public int getChance() {

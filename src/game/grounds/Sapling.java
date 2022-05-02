@@ -76,7 +76,7 @@ public class Sapling extends Tree {
     /**
      * Return the damage value of Sapling
      *
-     * @return an integer, indicating the damage value of the Sapling
+     * @return the damage of failing the jump
      */
     @Override
     public int getDamage() {
@@ -84,9 +84,9 @@ public class Sapling extends Tree {
     }
 
     /**
+     *Return the chance value of the Sapling
      *
-     *
-     * @return an integer, indicating the chance
+     * @return the chance of succeeding the jumo
      */
     @Override
     public int getChance() {

@@ -173,13 +173,17 @@ public class Mature extends Tree {
     /**
      * Return the damage value of Mature
      *
-     * @return an integer, indicating the damage value of the Mature
+     * @return the damage of failing the jump
      */
     @Override
     public int getDamage() {
         return damage;
     }
 
+    /**
+     * Return the chance value of Mature
+     * @return the chance of succeeding the jump
+     */
     @Override
     public int getChance() {
         return chance;

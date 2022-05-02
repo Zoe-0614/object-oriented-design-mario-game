@@ -60,6 +60,10 @@ public class Sprout extends Tree{
         return damage;
     }
 
+    /**
+     *
+     * @return the chance of failing the jump
+     */
     @Override
     public int getChance() {
         return chance;
