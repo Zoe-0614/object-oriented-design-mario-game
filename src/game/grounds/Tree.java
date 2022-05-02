@@ -11,6 +11,9 @@ import game.reset.Resettable;
 
 import java.util.Random;
 
+/**
+ * Abstract Class representing Tree
+ */
 abstract public class Tree extends Ground implements JumpCapable, Resettable, SpawnCapable {
     protected int age;
     protected Location location;
