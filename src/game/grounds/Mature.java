@@ -31,7 +31,12 @@ public class Mature extends Tree {
         this.chance = 70;
     }
 
-
+    /**
+     * Has a chance to spawn a Koopa
+     * Spawns a new Sprout at its surrounding square every 5 turns
+     * Has a chance to wither
+     * @param location of the Mature
+     */
     @Override
     public void drop(Location location) {
         Random random = new Random();

@@ -75,6 +75,10 @@ public class Sprout extends Tree{
         super.registerInstance();
     }
 
+    /**
+     * Has a chance to spawn a goomba at the Sprout
+     * @param location of the Sprout
+     */
     @Override
     public void drop(Location location) {
         //Add Goomba (10% to spawn)

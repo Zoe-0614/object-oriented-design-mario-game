@@ -28,7 +28,10 @@ public class Sapling extends Tree {
     }
 
 
-
+    /**
+     * Has a chance to spawn a coin at the Sapling
+     * @param location of the Sapling
+     */
     @Override
     public void drop(Location location){
         Random random = new Random();
