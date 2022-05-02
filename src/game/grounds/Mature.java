@@ -165,6 +165,11 @@ public class Mature extends Tree {
         return "Mature";
     }
 
+    /**
+     * Return the damage value of Mature
+     *
+     * @return an integer, indicating the damage value of the Mature
+     */
     @Override
     public int getDamage() {
         return damage;

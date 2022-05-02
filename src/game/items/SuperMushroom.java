@@ -9,6 +9,9 @@ import game.enums.Status;
 
 /**
  * Class representing the Super Mushroom.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 
 public class SuperMushroom extends MagicalItem implements Buyable {

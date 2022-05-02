@@ -23,6 +23,9 @@ import java.util.TreeMap;
 
 /**
  * An entity that is alive by having hit points. It also holds inventory that stores items.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 public abstract class Enemy extends Actor implements Resettable {
 

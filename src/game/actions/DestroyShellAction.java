@@ -6,7 +6,12 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.items.SuperMushroom;
 
-
+/**
+ * Special Action for Destroying enemy's shell.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
+ */
 public class DestroyShellAction extends Action {
     /**
      * The Actor that shell is to be destroyed

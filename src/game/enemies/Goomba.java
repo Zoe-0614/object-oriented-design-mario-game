@@ -18,6 +18,9 @@ import java.util.Random;
 
 /**
  * A little fungus guy.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 public class Goomba extends Enemy {
     /**

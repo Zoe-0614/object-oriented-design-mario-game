@@ -8,6 +8,9 @@ import game.items.MagicalItem;
 
 /**
  * Special Action for consuming Magical Items.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 public class ConsumeAction extends Action {
 

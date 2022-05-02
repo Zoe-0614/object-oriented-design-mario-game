@@ -6,6 +6,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.PowerStar;
 /**
  * Special Action for consuming PowerStar.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 public class ConsumePowerStarAction extends Action {
     /***

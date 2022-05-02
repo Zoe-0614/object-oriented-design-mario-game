@@ -6,6 +6,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
  * Special Action for Suicide (Cleaning the Gamemap).
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 public class SuicideAction extends Action {
     /**

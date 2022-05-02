@@ -22,6 +22,9 @@ import java.util.List;
 
 /**
  * A reptilian mini-trooper.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 public class Koopa extends Enemy {
     /**

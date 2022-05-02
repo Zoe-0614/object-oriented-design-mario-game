@@ -13,6 +13,9 @@ import game.enums.Status;
 
 /**
  * Class representing the Power Star.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 
 public class PowerStar extends MagicalItem implements Buyable {
@@ -94,15 +97,6 @@ public class PowerStar extends MagicalItem implements Buyable {
         }
     }
 
-    /**
-     * Display the remaining turns left of the Power Star.
-     *
-     * @return a string, e.g. "Power Star - 10 turns remaining"
-     */
-//    @Override
-//    public String toString() {
-//        return super.toString() + " - " + turn + " turns remaining";
-//    }
 
     /**
      * Get the price of PowerStar

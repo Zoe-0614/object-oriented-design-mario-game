@@ -12,6 +12,9 @@ import game.enums.Status;
 
 /**
  * Special Action for attacking other Actors.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 public class AttackAction extends Action {
 

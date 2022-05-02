@@ -16,6 +16,8 @@ import game.items.Wrench;
 
 /**
  * Special Action for attacking Koopa.
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 public class AttackKoopaAction extends Action {
 

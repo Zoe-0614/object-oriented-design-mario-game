@@ -15,6 +15,9 @@ import java.util.Random;
 
 /**
  * Special Behaviour for enemies to attack other Actors.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 public class AttackBehaviour implements Behaviour {
 

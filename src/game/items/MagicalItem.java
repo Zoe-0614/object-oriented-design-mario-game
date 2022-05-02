@@ -9,6 +9,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 /**
  * Abstract base class representing a physical magical items in the game world.
  *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
  */
 public abstract class MagicalItem extends Item {
     /***
