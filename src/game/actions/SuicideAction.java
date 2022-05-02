@@ -21,6 +21,13 @@ public class SuicideAction extends Action {
         return actor + " is cleared from the map";
     }
 
+    /**
+     * Describe the action in a format suitable for displaying in the menu.
+     *
+     * @see Action#menuDescription(Actor)
+     * @param actor The actor performing the action.
+     * @return null
+     */
     @Override
     public String menuDescription(Actor actor) {
         return null;

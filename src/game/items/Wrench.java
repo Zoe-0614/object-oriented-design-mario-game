@@ -20,11 +20,21 @@ public class Wrench extends WeaponItem implements Buyable {
         this.price = 200;
     }
 
+    /**
+     * Get the price of Wrench
+     *
+     * @return an integer, indicating the price of the Wrench
+     */
     @Override
     public int getPrice() {
         return price;
     }
 
+    /**
+     * Get the Wrench
+     *
+     * @return an Item, returning this item(Wrench in this case)
+     */
     @Override
     public Item getItem() {
         return this;

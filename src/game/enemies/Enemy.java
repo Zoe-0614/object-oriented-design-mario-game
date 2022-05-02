@@ -63,16 +63,6 @@ public abstract class Enemy extends Actor implements Resettable {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
-//        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
-//            if (this.getDisplayChar() == 'g') {
-//                actions.add(new AttackAction(this, direction));
-//            }
-//            else if (this.getDisplayChar() == 'K' || this.getDisplayChar() == 'D') {
-//                actions.add(new AttackKoopaAction(this, direction));
-//            }
-//            this.addCapability(Status.ENGAGED);
-//        }
 
         if (this.hasCapability(Status.ENGAGED) && otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) &&
                 map.locationOf(otherActor).getGround().getDisplayChar() != '_') {

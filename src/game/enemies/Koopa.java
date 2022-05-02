@@ -78,16 +78,12 @@ public class Koopa extends Enemy {
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if (this.isConscious()) {
             return super.playTurn(actions, lastAction, map, display);
-//            for (game.behaviours.Behaviour Behaviour : getBehaviours().values()) {
-//                Action action = Behaviour.getAction(this, map);
-//                if (action != null)
-//                    return action;
-//            }
+
         } else {
             this.setDisplayChar('D');
             return new DoNothingAction();
         }
-        //return new DoNothingAction();
+
     }
 
     /**

@@ -26,9 +26,15 @@ public class Coin extends Item implements Resettable {
         registerInstance();
     }
 
+    /**
+     * Get the value of Coin
+     *
+     * @return an integer, indicating the value of the Coin
+     */
     public int getValue() {
         return value;
     }
+
 
     @Override
     public void resetInstance() {

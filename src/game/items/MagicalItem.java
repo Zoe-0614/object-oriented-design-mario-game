@@ -21,6 +21,11 @@ public abstract class MagicalItem extends Item {
         super(name, displayChar, portable);
     }
 
+    /**
+     * A method to indicate dropping the magical items
+     *
+     * @param actor The Actor who consumed the Magical Items
+     */
     @Override
     public DropItemAction getDropAction(Actor actor) {
         return null;
