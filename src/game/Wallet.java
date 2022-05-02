@@ -17,6 +17,12 @@ public class Wallet {
         balance.put(actor, 2000);
     }
 
+    /**
+     * Gets the Money of the actor
+     *
+     * @param actor
+     * @return the amount of money the actor has
+     */
     //Gets the player's money
     public static int getBalance(Actor actor) {
         if (balance.containsKey(actor)) {

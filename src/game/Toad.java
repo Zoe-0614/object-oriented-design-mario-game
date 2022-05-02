@@ -26,7 +26,14 @@ public class Toad extends Actor {
 
     }
 
-
+    /**
+     * Allowable actions of Toad
+     *
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return
+     */
     //Add an action that allows talking to toad
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {

@@ -128,6 +128,14 @@ public class Mature extends Tree {
         return dirtCount;
     }
 
+    /**
+     * Allowable actions of Mature
+     *
+     * @param actor the Actor acting
+     * @param location the current Location
+     * @param direction the direction of the Ground from the Actor
+     * @return
+     */
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         if (direction.equals("")) {
             return new ActionList();
