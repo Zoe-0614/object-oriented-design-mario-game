@@ -31,11 +31,11 @@ public class Mature extends Tree {
         this.chance = 70;
     }
 
-
     /**
-     * To spawn items when certain conditions are met
-     *
-     * @param location the location of the Mature
+     * Has a chance to spawn a Koopa
+     * Spawns a new Sprout at its surrounding square every 5 turns
+     * Has a chance to wither
+     * @param location of the Mature
      */
     @Override
     public void drop(Location location) {
@@ -135,7 +135,7 @@ public class Mature extends Tree {
      * @param actor the Actor acting
      * @param location the current Location
      * @param direction the direction of the Ground from the Actor
-     * @return action list
+     * @return list of actions
      */
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         if (direction.equals("")) {
@@ -148,14 +148,6 @@ public class Mature extends Tree {
         return actionList;
     }
 
-    /**
-     * Determine whether the actor can perform jump action
-     *
-     * @param actor          The actor performing the jump.
-     * @param locationToJump The location to jump to.
-     * @param map            The map of the game.
-     * @return true if actor successfully perform jump action; false otherwise
-     */
     @Override
     public boolean jump(Actor actor, Location locationToJump, GameMap map) {
         int jumpChance = new Random().nextInt(100);
@@ -179,20 +171,15 @@ public class Mature extends Tree {
     }
 
     /**
-     * Return the damage value if the actor fails to jump on the Mature
+     * Return the damage value of Mature
      *
-     * @return an integer, indicating the damage value
+     * @return an integer, indicating the damage value of the Mature
      */
     @Override
     public int getDamage() {
         return damage;
     }
 
-    /**
-     * Return the chance for jump to succeed
-     *
-     * @return an integer, indicating the chance
-     */
     @Override
     public int getChance() {
         return chance;

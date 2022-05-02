@@ -32,7 +32,7 @@ public class Toad extends Actor {
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return list of actions
      */
     //Add an action that allows talking to toad
     @Override

@@ -29,9 +29,8 @@ public class Sapling extends Tree {
 
 
     /**
-     * To spawn items when certain conditions are met
-     *
-     * @param location the location of the Sapling
+     * Has a chance to spawn a coin at the Sapling
+     * @param location of the Sapling
      */
     @Override
     public void drop(Location location){

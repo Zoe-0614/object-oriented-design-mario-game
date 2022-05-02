@@ -20,7 +20,7 @@ public class Wallet {
     /**
      * Gets the Money of the actor
      *
-     * @param actor
+     * @param actor the Player
      * @return the amount of money the actor has
      */
     //Gets the player's money
