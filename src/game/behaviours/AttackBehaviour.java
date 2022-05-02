@@ -39,6 +39,7 @@ public class AttackBehaviour implements Behaviour {
      * Constructor.
      *
      * @param target the Actor to attack
+     * @param direction the direction to attack
      */
     public AttackBehaviour(Actor target, String direction) {
         this.target = target;

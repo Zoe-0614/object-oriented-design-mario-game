@@ -15,7 +15,13 @@ import java.util.Random;
  * Abstract Class representing Tree
  */
 abstract public class Tree extends Ground implements JumpCapable, Resettable, SpawnCapable {
+    /**
+     * The age of the tree
+     */
     protected int age;
+    /**
+     * The location of the tree
+     */
     protected Location location;
 
     /**

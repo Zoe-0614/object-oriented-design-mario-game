@@ -12,7 +12,11 @@ public class Wallet {
     //Class variable
     private static HashMap<Actor, Integer> balance = new HashMap<>();
 
-    //Maps the Actor to their starting balance
+    /**
+     * Maps the Actor to their starting balance
+     *
+     * @param actor the actor who has a wallet
+     */
     public static void addActor(Actor actor) {
         balance.put(actor, 2000);
     }

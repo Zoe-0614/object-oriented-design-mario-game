@@ -1,7 +1,9 @@
 package game.reset;
 
-import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * A Resettable interface to reset the game
+ */
 public interface Resettable {
     /**
      * Allows any classes that use this interface to reset abilities, attributes, and/or items.

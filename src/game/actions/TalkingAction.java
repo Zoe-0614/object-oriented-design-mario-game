@@ -11,10 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Special Action for talking to other actors.
+ */
 public class TalkingAction extends Action {
-    //Toad
+    /**
+     * The Toad
+     */
     protected Actor target;
+    /**
+     * To generate random value
+     */
     protected Random random = new Random();
+    /**
+     * A list of monologue script
+     */
     protected ArrayList<String> talkList = new ArrayList<>();
 
     /**

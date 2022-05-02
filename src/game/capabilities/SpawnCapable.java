@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.Location;
 public interface SpawnCapable {
     /**
      * Method that spawns things at their current location
-     * @param location
+     * @param location the location to spawn
      */
     void drop(Location location);
 }
