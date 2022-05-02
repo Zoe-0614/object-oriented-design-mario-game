@@ -24,6 +24,8 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
      */
     protected Location location;
 
+    protected boolean hasRegisteredInstance;
+
     /**
      * Constructor
      * @param displayChar the character to use to represent this item if it is on the ground
@@ -32,7 +34,7 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
     public Tree(char displayChar,int age) {
         super(displayChar);
         this.age = age;
-        registerInstance();
+        this.hasRegisteredInstance = false;
     }
 
     /**
@@ -59,6 +61,10 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
     public void tick(Location location){
         super.tick(location);
         this.location = location;
+        if (!hasRegisteredInstance) {
+            registerInstance();
+            hasRegisteredInstance = true;
+        }
         age++;
 //        System.out.println("age:"+age);
         if (age == 10){
@@ -83,7 +89,7 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
     public void resetInstance() {
         int rand = new Random().nextInt(2);
         if (rand == 0) {
-            location.setGround(new Dirt());
+            this.location.setGround(new Dirt());
         }
     }
 

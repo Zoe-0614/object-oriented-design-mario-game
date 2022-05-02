@@ -4,10 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.*;
 import game.enemies.Koopa;
-import game.grounds.Dirt;
-import game.grounds.Floor;
-import game.grounds.Sprout;
-import game.grounds.Wall;
+import game.grounds.*;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 

@@ -85,7 +85,7 @@ public class Mature extends Tree {
                 //If it is dirt, new sprout
                 if (spawn.getDisplayChar() == '.') {
                     spawn.setGround(new Sprout());
-
+                    spawn.getGround().tick(spawn);
                     isTree = false;
                 }
             }
