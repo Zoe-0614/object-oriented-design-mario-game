@@ -24,6 +24,10 @@ public class Fire extends Item {
         turns--;
         if (currentLocation.containsAnActor()) {
             currentLocation.getActor().hurt(20);
+            if (!currentLocation.getActor().isConscious()) {
+                System.out.println(currentLocation.getActor() + " is killed by " + this);
+                currentLocation.map().removeActor(currentLocation.getActor());
+            }
         }
     }
 

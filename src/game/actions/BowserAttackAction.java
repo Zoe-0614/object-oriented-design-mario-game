@@ -33,7 +33,7 @@ public class BowserAttackAction extends AttackAction {
         }
         else {
             result += attack(actor);
-            map.locationOf(actor).addItem(new Fire());
+            map.locationOf(target).addItem(new Fire());
         }
 
         result += dropInventory(actor, map);
