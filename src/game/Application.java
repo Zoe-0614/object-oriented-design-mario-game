@@ -91,6 +91,7 @@ public class Application {
 		gameMap.at(35,  14).setGround(new WarpPipe(lavaZone, lavaZone.at(0, 0), "Lava Zone"));
 		gameMap.at(42,  8).setGround(new WarpPipe(lavaZone, lavaZone.at(0, 0), "Lava Zone"));
 		lavaZone.at(0, 0).setGround(new WarpPipe(gameMap, null, "Main Map"));
+		lavaZone.at(2, 5).addActor(new PrincessPeach());
 		lavaZone.at(3, 5).addActor(new Bowser(lavaZone.at(3, 5)));
 
 		world.run();
