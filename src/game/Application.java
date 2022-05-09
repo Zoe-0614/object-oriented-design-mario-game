@@ -3,6 +3,7 @@ package game;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.*;
+import game.enemies.Bowser;
 import game.grounds.*;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
@@ -90,6 +91,7 @@ public class Application {
 		gameMap.at(35,  14).setGround(new WarpPipe(lavaZone, lavaZone.at(0, 0), "Lava Zone"));
 		gameMap.at(42,  8).setGround(new WarpPipe(lavaZone, lavaZone.at(0, 0), "Lava Zone"));
 		lavaZone.at(0, 0).setGround(new WarpPipe(gameMap, null, "Main Map"));
+		lavaZone.at(3, 5).addActor(new Bowser(lavaZone.at(3, 5)));
 
 		world.run();
 
