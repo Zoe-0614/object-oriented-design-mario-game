@@ -11,7 +11,7 @@ public class Fire extends Item {
      * Constructor.
      */
     public Fire() {
-        super("Fire", 'F', false);
+        super("Fire", 'v', false);
         this.turns = 3;
     }
 

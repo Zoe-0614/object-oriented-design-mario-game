@@ -52,6 +52,15 @@ public class Bowser extends Enemy{
 
     @Override
     public void resetInstance() {
-
+        if (!location.containsAnActor()) {
+            location.map().moveActor(this, location);
+        }
+        else if (location.containsAnActor() && location.getActor() != this &&
+                !location.getActor().hasCapability(Status.ISPLAYER)) {
+            location.map().removeActor(location.getActor());
+        }
+        this.heal(this.getMaxHp());
+        this.removeCapability(Status.ENGAGED);
+        getBehaviours().clear();
     }
 }
