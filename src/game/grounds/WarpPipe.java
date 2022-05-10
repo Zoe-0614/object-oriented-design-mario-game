@@ -7,11 +7,12 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.JumpAction;
 import game.actions.TeleportAction;
 import game.capabilities.JumpCapable;
+import game.capabilities.TeleportCapable;
 import game.enemies.PiranhaPlant;
 import game.enums.Status;
 import game.reset.Resettable;
 
-public class WarpPipe extends Ground implements JumpCapable, Resettable {
+public class WarpPipe extends Ground implements JumpCapable, Resettable, TeleportCapable {
     private int damage;
     private int chance;
     private boolean hasPiranhaPlant;
@@ -43,7 +44,7 @@ public class WarpPipe extends Ground implements JumpCapable, Resettable {
             actionList.add(new JumpAction(this, location, direction));
         }
         else if (location.getActor() == actor) {
-            actionList.add(new TeleportAction(destinationLocation, destinationName));
+            actionList.add(new TeleportAction(this, destinationName));
         }
         return actionList;
     }
@@ -77,6 +78,11 @@ public class WarpPipe extends Ground implements JumpCapable, Resettable {
     @Override
     public int getChance() {
         return chance;
+    }
+
+    @Override
+    public Location getDestinationLocation() {
+        return destinationLocation;
     }
 
     @Override
