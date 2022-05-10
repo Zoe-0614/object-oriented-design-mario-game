@@ -12,7 +12,7 @@ import game.items.MagicalItem;
  * @author Zoe Low Pei Ee
  * @version 1.0
  */
-public class ConsumeAction extends Action {
+public abstract class ConsumeAction extends Action {
 
     /**
      * The Magical Item that will be consumed
@@ -55,8 +55,6 @@ public class ConsumeAction extends Action {
      * @return a string, e.g. "Player consumes Super Mushroom"
      */
     @Override
-    public String menuDescription(Actor actor) {
-        return actor + " consumes " + magicalItem;
-    }
+    public abstract String menuDescription(Actor actor);
 
 }

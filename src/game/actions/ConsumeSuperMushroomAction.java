@@ -3,27 +3,22 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.items.PowerStar;
-/**
- * Special Action for consuming PowerStar.
- *
- * @author Zoe Low Pei Ee
- * @version 1.0
- */
-public class ConsumePowerStarAction extends ConsumeAction {
+import game.items.SuperMushroom;
+
+public class ConsumeSuperMushroomAction extends ConsumeAction{
     /***
-     * Indicate the Power Star
+     * Indicate the Super Mushroom
      */
-    private PowerStar powerStar;
+    private SuperMushroom superMushroom;
 
     /**
      * Constructor.
      *
-     * @param powerStar the item to consume
+     * @param superMushroom the item to consume
      */
-    public ConsumePowerStarAction(PowerStar powerStar) {
-        super(powerStar);
-        this.powerStar = powerStar;
+    public ConsumeSuperMushroomAction(SuperMushroom superMushroom) {
+        super(superMushroom);
+        this.superMushroom = superMushroom;
     }
 
     /**
@@ -44,13 +39,10 @@ public class ConsumePowerStarAction extends ConsumeAction {
      *
      * @see Action#menuDescription(Actor)
      * @param actor The actor performing the action.
-     * @return a string, e.g. "Player consumes PowerStar (10 turns left)"
+     * @return a string, e.g. "Player consumes Super Mushroom"
      */
     @Override
     public String menuDescription(Actor actor) {
-        if (powerStar.getTurn() == 1) {
-            return actor + " consumes the " + powerStar + " (" + powerStar.getTurn() + " turn left)";
-        }
-        return actor + " consumes the " + powerStar + " (" + powerStar.getTurn() + " turns left)";
+        return actor + " consumes " + superMushroom;
     }
 }
