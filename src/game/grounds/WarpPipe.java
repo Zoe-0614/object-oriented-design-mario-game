@@ -2,7 +2,6 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.JumpAction;
@@ -16,19 +15,17 @@ public class WarpPipe extends Ground implements JumpCapable, Resettable {
     private int damage;
     private int chance;
     private boolean hasPiranhaPlant;
-    private GameMap destinationMap;
     private Location destinationLocation;
     private String destinationName;
 
     /**
      * Constructor.
      */
-    public WarpPipe(GameMap destinationMap, Location destinationLocation, String destinationName) {
+    public WarpPipe(Location destinationLocation, String destinationName) {
         super('C');
         this.damage = 0;
         this.chance = 100;
         this.hasPiranhaPlant = false;
-        this.destinationMap = destinationMap;
         this.destinationLocation = destinationLocation;
         this.destinationName = destinationName;
         registerInstance();
@@ -46,7 +43,7 @@ public class WarpPipe extends Ground implements JumpCapable, Resettable {
             actionList.add(new JumpAction(this, location, direction));
         }
         else if (location.getActor() == actor) {
-            actionList.add(new TeleportAction(destinationMap, destinationLocation, destinationName));
+            actionList.add(new TeleportAction(destinationLocation, destinationName));
         }
         return actionList;
     }
@@ -81,7 +78,6 @@ public class WarpPipe extends Ground implements JumpCapable, Resettable {
     public int getChance() {
         return chance;
     }
-
 
     @Override
     public void resetInstance() {
