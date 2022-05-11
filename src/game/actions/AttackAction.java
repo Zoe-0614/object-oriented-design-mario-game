@@ -35,7 +35,7 @@ public class AttackAction extends Action {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param target the Actor to attack
 	 * @param direction the direction of incoming attack
 	 */
@@ -62,6 +62,14 @@ public class AttackAction extends Action {
 			return actor + " misses " + target + ".";
 		}
 
+		result += attack(actor);
+		result += dropInventory(actor, map);
+		return result;
+	}
+
+	public String attack(Actor actor) {
+		Weapon weapon = actor.getWeapon();
+		String result;
 		if (actor.hasCapability(Status.INVINCIBLE)){
 			target.resetMaxHp(0);
 			result = actor + " instantly kills " + target;
@@ -77,7 +85,11 @@ public class AttackAction extends Action {
 				target.removeCapability(Status.TALL);
 			}
 		}
+		return result;
+	}
 
+	public String dropInventory(Actor actor, GameMap map) {
+		String result = "";
 		if (!target.isConscious()) {
 			ActionList dropActions = new ActionList();
 			// drop all items
