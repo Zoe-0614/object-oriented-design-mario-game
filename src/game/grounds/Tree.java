@@ -66,14 +66,14 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
             hasRegisteredInstance = true;
         }
         age++;
-//        System.out.println("age:"+age);
+
         if (age == 10){
             location.setGround(new Sapling());
 
         }
         else if (age == 20){
             location.setGround(new Mature());
-//            System.out.println("Successfully set ground to Mature");
+
         }
         //After every tick, drop goomba, koopa etc
         if (age > 0) {

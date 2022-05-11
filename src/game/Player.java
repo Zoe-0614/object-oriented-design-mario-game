@@ -8,9 +8,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.PickUpCoinAction;
 import game.enums.Status;
 import game.grounds.Dirt;
+import game.items.Bottle;
 import game.items.Coin;
 import game.reset.ResetAction;
 import game.reset.Resettable;
@@ -23,6 +25,7 @@ public class Player extends Actor implements Resettable {
 	private final Menu menu = new Menu();
 	private int invincibleTimer;
 	private boolean resetState;
+	private Bottle bottle;
 
 	/**
 	 * Constructor.
@@ -36,6 +39,8 @@ public class Player extends Actor implements Resettable {
 		this.invincibleTimer = 10;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.ISPLAYER);
+		this.bottle = new Bottle();
+		this.addItemToInventory(this.bottle);
 
 		Wallet.addActor(this);
 		registerInstance();
@@ -106,5 +111,14 @@ public class Player extends Actor implements Resettable {
 		this.resetMaxHp(this.getMaxHp());
 		this.removeCapability(Status.INVINCIBLE);
 		this.removeCapability(Status.TALL);
+	}
+
+
+	public Bottle getBottle() {
+		return bottle;
+	}
+
+	public int getDamage(){
+		return this.getIntrinsicWeapon().damage();
 	}
 }
