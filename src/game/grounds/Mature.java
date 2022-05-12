@@ -5,7 +5,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.JumpAction;
+import game.enemies.FlyingKoopa;
 import game.enemies.Koopa;
+import game.enemies.WalkingKoopa;
 import game.enums.Status;
 import game.grounds.Sprout;
 import game.grounds.Tree;
@@ -45,7 +47,13 @@ public class Mature extends Tree {
         //Add Koopa
         if (prob < 15) {
             if (!location.containsAnActor()) {
-                location.addActor(new Koopa(location));
+                int probSpawn = random.nextInt(100);
+                if (prob < 50) {
+                    location.addActor(new WalkingKoopa(location));
+                }
+                else{
+                    location.addActor(new FlyingKoopa(location));
+                }
             }
         }
         //Create new sprout

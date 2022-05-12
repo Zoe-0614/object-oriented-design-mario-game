@@ -42,7 +42,7 @@ public class RefillAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " refill bottle from" + magicalFountain.getName();
+        return actor + " refills bottle from" + magicalFountain.getName();
     }
 
 }
