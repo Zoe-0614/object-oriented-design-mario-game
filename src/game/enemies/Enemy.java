@@ -14,6 +14,7 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.capabilities.WaterConsumable;
 import game.enums.Status;
 import game.reset.Resettable;
 
@@ -27,7 +28,7 @@ import java.util.TreeMap;
  * @author Zoe Low Pei Ee
  * @version 1.0
  */
-public abstract class Enemy extends Actor implements Resettable {
+public abstract class Enemy extends Actor implements Resettable, WaterConsumable {
 
     /**
      * A list of behaviours
@@ -37,6 +38,10 @@ public abstract class Enemy extends Actor implements Resettable {
      * The location of the enemy
      */
     protected Location location;
+    /**
+     * The intrinsic attack damage of the enemy
+     */
+    private int damage;
 
     /**
      * Constructor.
@@ -50,6 +55,7 @@ public abstract class Enemy extends Actor implements Resettable {
         super(name, displayChar, hitPoints);
         this.behaviours.put(10, new WanderBehaviour());
         this.location = location;
+        this.damage = getIntrinsicWeapon().damage();
         registerInstance();
     }
 

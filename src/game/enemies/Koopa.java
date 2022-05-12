@@ -26,15 +26,20 @@ import java.util.List;
  * @author Zoe Low Pei Ee
  * @version 1.0
  */
-public class Koopa extends Enemy {
+public abstract class Koopa extends Enemy {
+    /**
+     * The intrinsic attack damage of the enemy
+     */
+    private int damage;
     /**
      * Constructor.
      *
      * @param location the location of Koopa
      */
-    public Koopa(Location location) {
+    public Koopa(String name, char displayChar, int hitPoints, Location location) {
         super("Koopa", 'K', 100, location);
         this.addItemToInventory(new SuperMushroom());
+        this.damage = 30;
     }
 
     /**
@@ -101,7 +106,7 @@ public class Koopa extends Enemy {
      */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(30, "punches");
+        return new IntrinsicWeapon(damage, "punches");
     }
 
 
