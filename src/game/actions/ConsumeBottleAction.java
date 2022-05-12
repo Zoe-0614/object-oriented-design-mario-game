@@ -32,6 +32,6 @@ public class ConsumeBottleAction extends Action{
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " consumes " + bottle;
+        return actor + " consumes bottle" + bottle;
     }
 }

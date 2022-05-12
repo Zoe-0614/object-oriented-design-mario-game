@@ -4,6 +4,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.*;
 import game.enemies.Bowser;
+import game.enemies.Koopa;
+import game.fountains.HealthFountain;
+import game.fountains.PowerFountain;
 import game.grounds.*;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
@@ -93,6 +96,9 @@ public class Application {
 		lavaZone.at(0, 0).setGround(new WarpPipe(null, "Main Map"));
 		lavaZone.at(2, 5).addActor(new PrincessPeach());
 		lavaZone.at(3, 5).addActor(new Bowser(lavaZone.at(3, 5)));
+
+		gameMap.at(43,9).setGround(new HealthFountain());
+		gameMap.at(45,9).setGround(new PowerFountain());
 
 		world.run();
 

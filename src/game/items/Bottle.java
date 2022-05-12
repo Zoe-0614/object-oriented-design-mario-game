@@ -30,7 +30,7 @@ public class Bottle extends Item {
     }
 
     public String toString(){
-        return this + getFill().toString();
+        return this.fill.toString();
     }
 
 }

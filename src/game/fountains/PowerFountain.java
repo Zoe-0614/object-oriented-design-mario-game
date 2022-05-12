@@ -10,14 +10,13 @@ public class PowerFountain extends MagicalFountain {
     private PowerWater water;
     /***
      * Constructor.
-     * @param name the name of this Item
-     * @param displayChar the character to use to represent this item if it is on the ground
      */
-    public PowerFountain(String name, char displayChar) {
+    public PowerFountain() {
         super("Power Fountain", 'P');
         this.water = new PowerWater();
     }
 
+    @Override
     public PowerWater getWater() {
         return water;
     }

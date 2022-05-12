@@ -15,7 +15,7 @@ public class HealthFountain extends MagicalFountain {
         this.water = new HealthWater();
     }
 
-
+    @Override
     public HealthWater getWater() {
         return water;
     }

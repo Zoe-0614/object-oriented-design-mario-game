@@ -4,13 +4,13 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.Player;
 import game.actions.RefillAction;
-
-import java.util.List;
+import game.actions.TeleportAction;
+import game.items.MagicalItem;
 
 public abstract class MagicalFountain extends Ground {
     private final String name;
+    private MagicalItem water;
 
     public MagicalFountain(String name, char displayChar) {
         super(displayChar);
@@ -29,8 +29,10 @@ public abstract class MagicalFountain extends Ground {
             return new ActionList();
         }
         ActionList actionList = new ActionList();
-        if (actor.getDisplayChar() == 'm' || actor.getDisplayChar() == 'M') {
-            actionList.add(new RefillAction(this, actor));
+        if (location.getActor() != null) {
+            if (location.getActor().getDisplayChar() == 'm' || location.getActor().getDisplayChar() == 'M') {
+                actionList.add(new RefillAction(this, actor));
+            }
         }
 
         return actionList;
@@ -38,6 +40,10 @@ public abstract class MagicalFountain extends Ground {
 
     public String getName() {
         return name;
+    }
+
+    public MagicalItem getWater(){
+        return water;
     }
 
 }

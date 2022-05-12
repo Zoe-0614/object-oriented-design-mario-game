@@ -19,7 +19,6 @@ public class RefillAction extends Action {
      */
     private final MagicalFountain magicalFountain;
     private Bottle bottle;
-    private Stack<MagicalItem> waters;
     private Actor actor;
 
     /**
@@ -34,14 +33,16 @@ public class RefillAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-
+        if (actor.getInventory().contains(bottle)){
+            bottle.getFill().push(magicalFountain.getWater());
+        }
         return menuDescription(actor);
 
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " refill bottle from" + magicalFountain;
+        return actor + " refill bottle from" + magicalFountain.getName();
     }
 
 }
