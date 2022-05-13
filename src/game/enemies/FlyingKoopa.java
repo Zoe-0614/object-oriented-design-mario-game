@@ -1,7 +1,6 @@
 package game.enemies;
 
 import edu.monash.fit2099.engine.positions.Location;
-import game.capabilities.JumpCapable;
 
 public class FlyingKoopa extends Koopa {
     /**

@@ -48,7 +48,7 @@ public class Mature extends Tree {
         if (prob < 15) {
             if (!location.containsAnActor()) {
                 int probSpawn = random.nextInt(100);
-                if (prob < 50) {
+                if (probSpawn < 50) {
                     location.addActor(new WalkingKoopa(location));
                 }
                 else{

@@ -37,7 +37,7 @@ public abstract class Koopa extends Enemy {
      * @param location the location of Koopa
      */
     public Koopa(String name, char displayChar, int hitPoints, Location location) {
-        super("Koopa", 'K', 100, location);
+        super(name, displayChar, hitPoints, location);
         this.addItemToInventory(new SuperMushroom());
         this.damage = 30;
     }

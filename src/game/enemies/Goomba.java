@@ -24,12 +24,17 @@ import java.util.Random;
  */
 public class Goomba extends Enemy {
     /**
+     * The intrinsic attack damage of the enemy
+     */
+    private int damage;
+    /**
      * Constructor.
      *
      * @param location the location of Goomba
      */
     public Goomba(Location location) {
         super("Goomba", 'g', 20, location);
+        this.damage = 10;
     }
 
 
@@ -89,7 +94,7 @@ public class Goomba extends Enemy {
      */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(10, "kicks");
+        return new IntrinsicWeapon(damage, "kicks");
     }
 
 
