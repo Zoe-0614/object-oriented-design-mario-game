@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.PickUpCoinAction;
+import game.capabilities.WaterConsumable;
 import game.enums.Status;
 import game.grounds.Dirt;
 import game.items.Bottle;
@@ -20,12 +21,13 @@ import game.reset.Resettable;
 /**
  * Class representing the Player.
  */
-public class Player extends Actor implements Resettable {
+public class Player extends Actor implements Resettable, WaterConsumable {
 
 	private final Menu menu = new Menu();
 	private int invincibleTimer;
 	private boolean resetState;
-	private Bottle bottle;
+	private int damage;
+
 
 	/**
 	 * Constructor.
@@ -39,8 +41,7 @@ public class Player extends Actor implements Resettable {
 		this.invincibleTimer = 10;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.ISPLAYER);
-		this.bottle = new Bottle();
-		this.addItemToInventory(this.bottle);
+		this.damage = getIntrinsicWeapon().damage();
 
 		Wallet.addActor(this);
 		registerInstance();
@@ -114,11 +115,6 @@ public class Player extends Actor implements Resettable {
 	}
 
 
-	public Bottle getBottle() {
-		return bottle;
-	}
 
-	public int getDamage(){
-		return this.getIntrinsicWeapon().damage();
-	}
+
 }

@@ -2,13 +2,16 @@ package game.items;
 
 import edu.monash.fit2099.engine.items.Item;
 import game.actions.ConsumeBottleAction;
-import game.actions.ConsumeSuperMushroomAction;
-import game.actions.RefillAction;
+import game.reset.ResetManager;
 
 import java.util.Stack;
 
 public class Bottle extends Item {
     private Stack<MagicalItem> fill;
+    /**
+     * A singleton reset manager instance
+     */
+    private static Bottle instance;
 
     public Bottle(){
         super("Bottle",'b',false);
@@ -17,13 +20,16 @@ public class Bottle extends Item {
     }
 
     /**
-     * Get the bottle
-     *
-     * @return an Item, returning this item(Bottle in this case)
+     * Get the singleton instance of reset manager
+     * @return ResetManager singleton instance
      */
-    public Item getItem() {
-        return this;
+    public static Bottle getInstance(){
+        if(instance == null){
+            instance = new Bottle();
+        }
+        return instance;
     }
+
 
     public Stack getFill() {
         return fill;

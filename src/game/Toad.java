@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.BuyAction;
+import game.actions.GiveBottleAction;
 import game.actions.TalkingAction;
 import game.enums.Status;
 import game.items.PowerStar;
@@ -41,6 +42,7 @@ public class Toad extends Actor {
         actions.add(new BuyAction(new PowerStar()));
         actions.add(new BuyAction(new SuperMushroom()));
         actions.add(new BuyAction(new Wrench()));
+        actions.add(new GiveBottleAction());
         if(otherActor.hasCapability(Status.ISPLAYER)){
             actions.add(new TalkingAction(this));
         }
