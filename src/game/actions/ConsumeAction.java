@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.items.MagicalItem;
+import game.items.PowerStar;
 
 /**
  * Special Action for consuming Magical Items.
@@ -12,7 +13,7 @@ import game.items.MagicalItem;
  * @author Zoe Low Pei Ee
  * @version 1.0
  */
-public abstract class ConsumeAction extends Action {
+public class ConsumeAction extends Action {
 
     /**
      * The Magical Item that will be consumed
@@ -55,6 +56,17 @@ public abstract class ConsumeAction extends Action {
      * @return a string, e.g. "Player consumes Super Mushroom"
      */
     @Override
-    public abstract String menuDescription(Actor actor);
+    public String menuDescription(Actor actor){
+        if (magicalItem.getDisplayChar() == '*') {
+            PowerStar item = (PowerStar) magicalItem;
+            if (item.getTurn() == 1) {
+                return actor + " consumes the " + item + " (" + item.getTurn() + " turn left)";
+            }
+            return actor + " consumes the " + item + " (" + item.getTurn() + " turns left)";
+        } else{
+            return actor + " consumes " + magicalItem;
+        }
+
+    };
 
 }

@@ -23,7 +23,7 @@ public class SuperMushroom extends MagicalItem implements Buyable {
      */
     public SuperMushroom() {
         super("Super Mushroom", '^', false);
-        addAction(new ConsumeSuperMushroomAction(this));
+        addAction(new ConsumeAction(this));
         this.price = 400;
     }
 
