@@ -10,6 +10,7 @@ import game.actions.BuyAction;
 import game.actions.GiveBottleAction;
 import game.actions.TalkingAction;
 import game.enums.Status;
+import game.items.Bottle;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 import game.items.Wrench;
@@ -18,6 +19,10 @@ import game.items.Wrench;
  * Class representing Toad
  */
 public class Toad extends Actor {
+    /**
+     * Check if Player has Bottle
+     */
+    boolean hasBottle;
 
     /**
      * Constructor
@@ -42,7 +47,17 @@ public class Toad extends Actor {
         actions.add(new BuyAction(new PowerStar()));
         actions.add(new BuyAction(new SuperMushroom()));
         actions.add(new BuyAction(new Wrench()));
-        actions.add(new GiveBottleAction());
+        for (int i = 0; i < otherActor.getInventory().size(); i++) {
+            if (otherActor.getInventory().get(i).getDisplayChar() == 'b') {
+                hasBottle = true;
+            }
+            if (hasBottle) {
+                break;
+            }
+        }
+        if (!hasBottle) {
+            actions.add(new GiveBottleAction());
+        }
         if(otherActor.hasCapability(Status.ISPLAYER)){
             actions.add(new TalkingAction(this));
         }
