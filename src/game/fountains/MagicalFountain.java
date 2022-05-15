@@ -4,21 +4,22 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.ConsumeAction;
 import game.actions.ConsumeWaterAction;
 import game.actions.RefillAction;
-import game.actions.TeleportAction;
 import game.items.MagicalItem;
+
+import java.util.ArrayList;
 
 public abstract class MagicalFountain extends Ground {
     private final String name;
-    private MagicalItem water;
+    private ArrayList<MagicalItem> waters =  new ArrayList<>();
 
     public MagicalFountain(String name, char displayChar) {
         super(displayChar);
         this.name = name;
     }
 
+    @Override
     /**
      * Allowable actions of the MagicalFountain
      * @param actor the Actor acting
@@ -27,16 +28,13 @@ public abstract class MagicalFountain extends Ground {
      * @return list of actions
      */
     public ActionList allowableActions(Actor actor, Location location, String direction) {
-        if (direction.equals("")) {
-            return new ActionList();
-        }
         ActionList actionList = new ActionList();
         if (location.getActor() != null) {
             if (location.getActor().getDisplayChar() == 'm' || location.getActor().getDisplayChar() == 'M') {
-                actionList.add(new RefillAction(this, actor));
+                actionList.add(new RefillAction(this));
             }
             else{
-                actionList.add(new ConsumeWaterAction(this.water));
+                actionList.add(new ConsumeWaterAction(this.getWater()));
             }
         }
 
@@ -47,8 +45,11 @@ public abstract class MagicalFountain extends Ground {
         return name;
     }
 
-    public MagicalItem getWater(){
-        return water;
-    }
+    public abstract MagicalItem getWater();
+//        MagicalItem water = waters.remove(waters.size()-1);
+//        return water;
+//    }
+
+    public abstract int getWaterLeft();
 
 }

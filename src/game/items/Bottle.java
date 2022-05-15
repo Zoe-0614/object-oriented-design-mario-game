@@ -21,7 +21,7 @@ public class Bottle extends Item {
 
     /**
      * Get the singleton instance of reset manager
-     * @return ResetManager singleton instance
+     * @return Bottle singleton instance
      */
     public static Bottle getInstance(){
         if(instance == null){

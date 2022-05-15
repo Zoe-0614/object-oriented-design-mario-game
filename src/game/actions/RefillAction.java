@@ -2,35 +2,40 @@ package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.fountains.MagicalFountain;
 import game.items.Bottle;
-import game.items.MagicalItem;
-
-import java.util.List;
-import java.util.Stack;
 
 
 public class RefillAction extends Action {
 
     /**
-     * The Magical Fountain that will be filled
+     * The Magical Fountain which water will be filled into the bottle
      */
     private final MagicalFountain magicalFountain;
+    /**
+     * The Bottle that will be filled
+     */
     private Bottle bottle;
-    private Actor actor;
 
     /**
      * Constructor.
      *
      * @param magicalFountain the fountain which water will be refill into the bottle
-     * @param actor the actor which bottle will be refilled
      */
-    public RefillAction(MagicalFountain magicalFountain, Actor actor) {
+    public RefillAction(MagicalFountain magicalFountain) {
         this.magicalFountain = magicalFountain;
+        this.bottle = Bottle.getInstance();
     }
 
+    /**
+     * Fill up the bottle with the mMagicalFountain's water.
+     *
+     * @see Action#execute(Actor, GameMap)
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return a suitable description to display in the UI
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         if (actor.getInventory().contains(bottle)){
@@ -40,9 +45,16 @@ public class RefillAction extends Action {
 
     }
 
+    /**
+     * Describe the action in a format suitable for displaying in the menu.
+     *
+     * @see Action#menuDescription(Actor)
+     * @param actor The actor performing the action.
+     * @return a string, e.g. "Player refills bottle from HealthFountain (10/10)"
+     */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " refills bottle from" + magicalFountain.getName();
+        return actor + " refills bottle from " + magicalFountain.getName() + " (" + magicalFountain.getWaterLeft()+"/10)";
     }
 
 }
