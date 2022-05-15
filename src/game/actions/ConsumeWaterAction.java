@@ -23,7 +23,7 @@ public class ConsumeWaterAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         magicalItem.consumedBy(actor, map);
-        return menuDescription(actor);
+        return actor + " consumes " + magicalItem.toString();
     }
 
     @Override

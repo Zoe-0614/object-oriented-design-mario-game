@@ -3,12 +3,12 @@ package game.items;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
-public class HealthWater extends MagicalItem{
+public class HealingWater extends MagicalItem{
     /***
      * Constructor.
      */
-    public HealthWater() {
-        super("Health Water", 'H', false);
+    public HealingWater() {
+        super("Healing Water", 'H', false);
     }
 
     @Override

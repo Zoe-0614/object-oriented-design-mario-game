@@ -46,9 +46,7 @@ public abstract class MagicalFountain extends Ground {
     }
 
     public abstract MagicalItem getWater();
-//        MagicalItem water = waters.remove(waters.size()-1);
-//        return water;
-//    }
+
 
     public abstract int getWaterLeft();
 

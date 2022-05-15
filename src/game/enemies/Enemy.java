@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
 import game.actions.AttackKoopaAction;
 import game.actions.DestroyShellAction;
@@ -132,5 +133,18 @@ public abstract class Enemy extends Actor implements Resettable, WaterConsumable
     public void resetInstance() {
         GameMap map = location.map();
         map.removeActor(this);
+    }
+
+    /**
+     * Creates and returns an intrinsic weapon.
+     *
+     * @return a freshly-instantiated IntrinsicWeapon
+     */
+    @Override
+    protected abstract IntrinsicWeapon getIntrinsicWeapon();
+
+    @Override
+    public void setDamage() {
+        this.damage = this.damage + 15;
     }
 }

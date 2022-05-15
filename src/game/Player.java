@@ -41,7 +41,7 @@ public class Player extends Actor implements Resettable, WaterConsumable {
 		this.invincibleTimer = 10;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.ISPLAYER);
-		this.damage = getIntrinsicWeapon().damage();
+		this.damage = 5;
 
 		Wallet.addActor(this);
 		registerInstance();
@@ -115,6 +115,19 @@ public class Player extends Actor implements Resettable, WaterConsumable {
 	}
 
 
+	/**
+	 * Creates and returns an intrinsic weapon.
+	 *
+	 * @return a freshly-instantiated IntrinsicWeapon
+	 */
+	@Override
+	protected IntrinsicWeapon getIntrinsicWeapon() {
+		return new IntrinsicWeapon(damage, "punches");
+	}
 
 
+	@Override
+	public void setDamage() {
+		this.damage = this.damage + 15;
+	}
 }

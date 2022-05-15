@@ -1,19 +1,19 @@
 package game.fountains;
 
-import game.items.HealthWater;
+import game.items.HealingWater;
 
 import java.util.ArrayList;
 
 public class HealthFountain extends MagicalFountain {
 
-    private ArrayList<HealthWater> waters = new ArrayList<>();
+    private ArrayList<HealingWater> waters = new ArrayList<>();
     /***
      * Constructor.
      */
     public HealthFountain() {
         super("Health Fountain", 'H');
         for (int i = 0; i < 10; i++) {
-            this.waters.add(new HealthWater());
+            this.waters.add(new HealingWater());
         }
     }
 
@@ -30,8 +30,8 @@ public class HealthFountain extends MagicalFountain {
 //    }
 
     @Override
-    public HealthWater getWater() {
-        HealthWater water = waters.remove(waters.size()-1);
+    public HealingWater getWater() {
+        HealingWater water = waters.remove(waters.size()-1);
         return water;
     }
 
