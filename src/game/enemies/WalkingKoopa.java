@@ -2,7 +2,12 @@ package game.enemies;
 
 
 import edu.monash.fit2099.engine.positions.Location;
-
+/**
+ * Class representing a walking(normal) Koopa.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
+ */
 public class WalkingKoopa extends Koopa{
     /**
      * Constructor.

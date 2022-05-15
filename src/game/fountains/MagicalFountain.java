@@ -2,17 +2,19 @@ package game.fountains;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeWaterAction;
 import game.actions.RefillAction;
-import game.items.HealingWater;
 import game.items.MagicalItem;
-import game.items.PowerWater;
 
-import java.util.ArrayList;
-
+/**
+ * Abstract base class representing a fountain produces an endless amount of water.
+ * Each water from a fountain provides different effects that will help Mario in his journey.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
+ */
 public abstract class MagicalFountain extends Ground {
     /***
      * Indicate the name of the Magical Fountain
@@ -23,10 +25,7 @@ public abstract class MagicalFountain extends Ground {
      * Indicate the remaining turns of the fountain to recharge water
      */
     protected int turn;
-    /**
-     * The location of the tree
-     */
-    protected Location location;
+
 
     /***
      * Constructor
@@ -62,6 +61,7 @@ public abstract class MagicalFountain extends Ground {
 
     /**
      * Inform Magical Fountain on the ground of the passage of time.
+     * Replenish water once all water is drank or being filled up.
      *
      * This method is called once per turn.
      * @param location The location of the Magical Fountain.
@@ -69,7 +69,6 @@ public abstract class MagicalFountain extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-        this.location = location;
         if (this.getWaterLeft() == 0) {
             turn--;
             if (turn == 0) {
@@ -94,13 +93,13 @@ public abstract class MagicalFountain extends Ground {
     }
 
     /**
-     * Get the water of the Magical Fountain
+     * An abstract method to get the water of the Magical Fountain
      * @return a water, eg. Power Water
      */
     public abstract MagicalItem getWater();
 
     /**
-     * Indicate the remaining water left in the Magical Fountain
+     * An abstract method to indicate the remaining water left in the Magical Fountain
      * @return an int, eg. 10
      */
     public abstract int getWaterLeft();

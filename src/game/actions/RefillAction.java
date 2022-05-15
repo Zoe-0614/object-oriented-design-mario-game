@@ -6,7 +6,12 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.fountains.MagicalFountain;
 import game.items.Bottle;
 
-
+/**
+ * Special Action for refilling the bottle.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
+ */
 public class RefillAction extends Action {
 
     /**
@@ -29,7 +34,7 @@ public class RefillAction extends Action {
     }
 
     /**
-     * Fill up the bottle with the mMagicalFountain's water.
+     * Fill up the bottle with the MagicalFountain's water.
      *
      * @see Action#execute(Actor, GameMap)
      * @param actor The actor performing the action.

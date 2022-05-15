@@ -102,7 +102,7 @@ public class Application {
 		gameMap.at(30,8).setGround(new HealthFountain());
 		gameMap.at(28,6).setGround(new PowerFountain());
 		lavaZone.at(4,9).setGround(new HealthFountain());
-		lavaZone.at(5,9).setGround(new PowerFountain());
+		lavaZone.at(8,3).setGround(new PowerFountain());
 
 		world.run();
 

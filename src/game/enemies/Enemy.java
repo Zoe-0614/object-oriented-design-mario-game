@@ -8,18 +8,13 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.actions.AttackAction;
-import game.actions.AttackKoopaAction;
-import game.actions.DestroyShellAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
-import game.capabilities.WaterConsumable;
 import game.enums.Status;
 import game.reset.Resettable;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -29,7 +24,7 @@ import java.util.TreeMap;
  * @author Zoe Low Pei Ee
  * @version 1.0
  */
-public abstract class Enemy extends Actor implements Resettable, WaterConsumable {
+public abstract class Enemy extends Actor implements Resettable{
 
     /**
      * A list of behaviours
@@ -143,7 +138,9 @@ public abstract class Enemy extends Actor implements Resettable, WaterConsumable
     @Override
     protected abstract IntrinsicWeapon getIntrinsicWeapon();
 
-    @Override
+    /**
+     * Reset the damage.
+     */
     public void setDamage() {
         this.damage = this.damage + 15;
     }

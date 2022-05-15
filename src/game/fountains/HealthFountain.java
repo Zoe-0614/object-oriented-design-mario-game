@@ -1,11 +1,18 @@
 package game.fountains;
 
 import game.items.HealingWater;
-
 import java.util.ArrayList;
 
+/**
+ * A fountain that produces Healing Water.
+ *
+ * @author Zoe Low Pei Ee
+ * @version 1.0
+ */
 public class HealthFountain extends MagicalFountain {
-
+    /***
+     * Indicate the ArrayList that stores the Healing Water.
+     */
     private ArrayList<HealingWater> waters = new ArrayList<>();
     /***
      * Constructor.
@@ -17,25 +24,20 @@ public class HealthFountain extends MagicalFountain {
         }
     }
 
-
-//    @Override
-//    /**
-//     * Allowable actions of the MagicalFountain
-//     * @param actor the Actor acting
-//     * @param location the current Location
-//     * @param direction the direction of the Ground from the Actor
-//     * @return list of actions
-//     */
-//    public ActionList allowableActions(Actor actor, Location location, String direction) {
-//        return super.allowableActions(actor,location,direction);
-//    }
-
+    /**
+     * Get the water of the Magical Fountain
+     * @return a water, eg. Healing Water
+     */
     @Override
     public HealingWater getWater() {
         HealingWater water = waters.remove(waters.size()-1);
         return water;
     }
 
+    /**
+     * Indicate the remaining water left in the Health Fountain
+     * @return an int, eg. 10
+     */
     @Override
     public int getWaterLeft(){
         return waters.size();

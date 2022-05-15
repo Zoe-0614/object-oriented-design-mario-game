@@ -10,10 +10,8 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.PickUpCoinAction;
-import game.capabilities.WaterConsumable;
 import game.enums.Status;
 import game.grounds.Dirt;
-import game.items.Bottle;
 import game.items.Coin;
 import game.reset.ResetAction;
 import game.reset.Resettable;
@@ -21,7 +19,7 @@ import game.reset.Resettable;
 /**
  * Class representing the Player.
  */
-public class Player extends Actor implements Resettable, WaterConsumable {
+public class Player extends Actor implements Resettable{
 
 	private final Menu menu = new Menu();
 	private int invincibleTimer;
@@ -114,7 +112,6 @@ public class Player extends Actor implements Resettable, WaterConsumable {
 		this.removeCapability(Status.TALL);
 	}
 
-
 	/**
 	 * Creates and returns an intrinsic weapon.
 	 *
@@ -125,8 +122,9 @@ public class Player extends Actor implements Resettable, WaterConsumable {
 		return new IntrinsicWeapon(damage, "punches");
 	}
 
-
-	@Override
+	/**
+	 * Reset the damage.
+	 */
 	public void setDamage() {
 		this.damage = this.damage + 15;
 	}
