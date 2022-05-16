@@ -75,7 +75,7 @@ public class PowerStar extends MagicalItem implements Buyable {
     public void tick(Location location, Actor actor) {
         turn--;
         if (!justPickedUp) {
-            addAction(new ConsumePowerStarAction(this));
+            addAction(new ConsumeAction(this));
             justPickedUp = true;
         }
         if (turn == 0) {

@@ -39,7 +39,7 @@ public class JumpAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         boolean isSuccess;
-        if (actor.hasCapability(Status.TALL) || actor.getDisplayChar() =='F') {
+        if (actor.hasCapability(Status.TALL)) {
             map.moveActor(actor, locationToJump);
             isSuccess = true;
         } else {

@@ -16,21 +16,21 @@ public class Bottle extends Item {
      */
     private Stack<MagicalItem> fill;
     /**
-     * A singleton reset manager instance
+     * A singleton Bottle instance
      */
     private static Bottle instance;
 
     /**
      * Constructor
      */
-    public Bottle(){
+    private Bottle(){
         super("Bottle",'b',false);
         fill = new Stack<MagicalItem>();
         addAction(new ConsumeBottleAction(this));
     }
 
     /**
-     * Get the singleton instance of reset manager
+     * Get the singleton instance of bottle
      * @return Bottle singleton instance
      */
     public static Bottle getInstance(){

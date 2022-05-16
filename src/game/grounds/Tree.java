@@ -47,7 +47,7 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
      */
     @Override
     public boolean canActorEnter(Actor actor) {
-        if (actor.hasCapability(Status.INVINCIBLE)) {
+        if (actor.hasCapability(Status.INVINCIBLE) || actor.getDisplayChar() == 'F') {
             return true;
         }
         return false;
