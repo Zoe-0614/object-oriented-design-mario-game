@@ -70,6 +70,7 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
         if (age == 10){
             location.setGround(new Sapling());
 
+
         }
         else if (age == 20){
             location.setGround(new Mature());
