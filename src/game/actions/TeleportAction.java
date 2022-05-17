@@ -19,7 +19,7 @@ public class TeleportAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         teleporter.teleport(actor, map);
-        return menuDescription(actor);
+        return actor + " teleports to " + destinationName;
     }
 
     @Override
