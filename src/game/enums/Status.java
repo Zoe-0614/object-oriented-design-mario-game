@@ -12,5 +12,6 @@ public enum Status {
     ALREADY_INVINCIBLE,
     RESET, //use to determine resettable
     ISPLAYER, //use this to check if toad is talking to player
-
+    FIRE_ATTACK, //use this status after the player had consumed Fire Flower
+    ALREADY_FIRE_ATTACK,
 }

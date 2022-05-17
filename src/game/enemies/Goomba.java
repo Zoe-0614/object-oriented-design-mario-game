@@ -55,7 +55,7 @@ public class Goomba extends Enemy {
             this.addCapability(Status.ENGAGED);
         }
 
-        super.allowableActions(otherActor, direction, map);
+        actions.add(super.allowableActions(otherActor, direction, map));
         return actions;
     }
 

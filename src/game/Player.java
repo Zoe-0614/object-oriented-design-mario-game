@@ -23,6 +23,7 @@ public class Player extends Actor implements Resettable{
 
 	private final Menu menu = new Menu();
 	private int invincibleTimer;
+	private int fireAttackTimer;
 	private boolean resetState;
 	private int damage;
 
@@ -37,8 +38,10 @@ public class Player extends Actor implements Resettable{
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.invincibleTimer = 10;
+		this.fireAttackTimer = 20;
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addCapability(Status.ISPLAYER);
+//		this.addCapability(Status.FIRE_ATTACK);
 		this.damage = 5;
 
 		Wallet.addActor(this);
@@ -88,6 +91,19 @@ public class Player extends Actor implements Resettable{
 
 		if (invincibleTimer == 0) {
 			this.removeCapability(Status.INVINCIBLE);
+		}
+		//Fire attack effect timer and check capability
+		if (this.hasCapability(Status.FIRE_ATTACK)){
+			if (this.hasCapability(Status.ALREADY_FIRE_ATTACK)){
+				fireAttackTimer = 20;
+				this.removeCapability(Status.ALREADY_FIRE_ATTACK);
+			}
+			System.out.println(this.name + " has FIRE ATTACK!");
+			fireAttackTimer --;
+			System.out.println("Fire attack timer:" +fireAttackTimer);
+		}
+		if (fireAttackTimer == 0){
+			this.removeCapability(Status.FIRE_ATTACK);
 		}
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);

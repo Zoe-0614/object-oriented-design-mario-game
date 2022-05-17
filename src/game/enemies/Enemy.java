@@ -68,7 +68,6 @@ public abstract class Enemy extends Actor implements Resettable{
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-
         if (this.hasCapability(Status.ENGAGED) && otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) &&
                 map.locationOf(otherActor).getGround().getDisplayChar() != '_') {
             behaviours.put(9, new AttackBehaviour(otherActor, direction));

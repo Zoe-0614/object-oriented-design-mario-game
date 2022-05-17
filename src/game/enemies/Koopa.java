@@ -53,7 +53,7 @@ public abstract class Koopa extends Enemy {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-
+        ActionList finalActions = new ActionList();
         List<Item> inventory = otherActor.getInventory();
         boolean hasWrench = false;
         for (int i = 0; i < inventory.size(); i++) {
@@ -69,12 +69,14 @@ public abstract class Koopa extends Enemy {
             this.addCapability(Status.ENGAGED);
         }
 
-        super.allowableActions(otherActor, direction, map);
+        ActionList actions2 = super.allowableActions(otherActor, direction, map);
+        finalActions.add(actions);
+        finalActions.add(actions2);
         // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back
 //        if (otherActor.hasCapability(Status.WRENCH) || this.getDisplayChar() != 'D') {
 //            actions.add(new AttackKoopaAction(this, direction));
 //        }
-        return actions;
+        return finalActions;
     }
 
     /**
