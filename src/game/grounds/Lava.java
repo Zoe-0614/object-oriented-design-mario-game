@@ -26,7 +26,9 @@ public class Lava extends Ground {
     public void tick(Location location) {
         Actor actor = location.getActor();
         if (actor != null) {
-            actor.hurt(15);
+            int damage = 15;
+            actor.hurt(damage);
+            System.out.println(actor + " received " + damage + " damage from lava");
         }
     }
 }
