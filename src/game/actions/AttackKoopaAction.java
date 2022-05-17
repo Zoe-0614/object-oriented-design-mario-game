@@ -95,6 +95,6 @@ public class AttackKoopaAction extends Action {
         if (target.isConscious()) {
             return actor + " attacks " + target + " at " + direction;
         }
-        return actor + " destroys Koopa (Dormant)";
+        return actor + " destroys " + target +" (Dormant)";
     }
 }
