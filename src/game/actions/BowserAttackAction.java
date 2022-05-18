@@ -22,6 +22,12 @@ public class BowserAttackAction extends AttackAction {
         super(target, direction);
     }
 
+    /**
+     * Executes the attack action of Bowser.
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return a String which displays the attack done by Bowser in the log
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
         String result = "";
@@ -40,6 +46,11 @@ public class BowserAttackAction extends AttackAction {
         return result;
     }
 
+    /**
+     * The menu description of Bowser's attack.
+     * @param actor The actor performing the action.
+     * @return a String which is the menu description of Bowser's attack.
+     */
     @Override
     public String menuDescription(Actor actor) {
         return super.menuDescription(actor);
