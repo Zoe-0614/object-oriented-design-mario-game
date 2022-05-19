@@ -5,9 +5,14 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeAction;
 import game.enums.Status;
 
+/**
+ * Class representing a Fire Flower
+ *
+ * @author Loh Zhun Guan
+ * @verseion 1.0
+ */
 public class FireFlower extends MagicalItem{
-
-    private int turn;
+    
     /**
      * Constructor
      */
@@ -16,6 +21,12 @@ public class FireFlower extends MagicalItem{
         addAction(new ConsumeAction(this));
     }
 
+    /**
+     * The features after an Actor consumed Fire Flower
+     *
+     * @param actor The Actor who consumed the Magical Items
+     * @param map   the map that contains this location
+     */
     @Override
     public void consumedBy(Actor actor, GameMap map) {
         if (actor.hasCapability(Status.FIRE_ATTACK)) {
@@ -27,9 +38,7 @@ public class FireFlower extends MagicalItem{
 
     }
 
-    public int getTurn() {
-        return turn;
-    }
+
 
 
 }

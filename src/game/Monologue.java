@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * Class representing the Monologue
+ *
+ * @author Loh Zhun Guan
+ * @version 1.0
+ */
 public class Monologue {
 
     /**
@@ -25,9 +31,9 @@ public class Monologue {
 
 
     /**
-     * Maps the npc to their starting turn
+     * Maps the actor to their starting turn
      *
-     * @param actor the npc that has a play turn
+     * @param actor the actor that has a play turn
      */
     public static void addActor(Actor actor) {
         actors.put(actor, 0);
@@ -69,19 +75,17 @@ public class Monologue {
         actorsTalkList.put(actor, talkList);
     }
 
-    //NPC middleman gettalk
-    //Hashmap of all the actors and their respective talklist
+    /**
+     *
+     * @param actor the Actor
+     */
     public static void talk(Actor actor){
         if (getTurn(actor) % 2 ==0){
             ArrayList<String> newTalk = actorsTalkList.get(actor);
             int talkIndex = random.nextInt(newTalk.size());
             System.out.println(actor+ ": \""+newTalk.get(talkIndex)+"\"");
         }
-//        for (Actor key : actorsTalkList.keySet()){
-//            ArrayList<String> newTalk = actorsTalkList.get(key);
-//            int talkIndex = random.nextInt(newTalk.size());
-//            System.out.println(newTalk.get(talkIndex));
-//        }
+
 
     }
 
