@@ -8,14 +8,21 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
-import game.behaviours.AttackBehaviour;
 import game.behaviours.BowserAttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.enums.Status;
-import game.items.Fire;
 import game.items.Key;
+import game.Monologue;
+
+import java.util.ArrayList;
 
 public class Bowser extends Enemy{
+
+    /**
+     * List of monologue script
+     */
+    private ArrayList<String> talkList = new ArrayList();
+
     /**
      * Constructor.
      */
@@ -23,6 +30,13 @@ public class Bowser extends Enemy{
         super("Bowser", 'B', 500, location);
         getBehaviours().clear();
         this.addItemToInventory(new Key());
+        talkList.add("What was that sound? Oh, just a fire.");
+        talkList.add("Princess Peach! You are formally invited... to the creation of my new kingdom!");
+        talkList.add("Never gonna let you down!");
+        talkList.add("Wrrrrrrrrrrrrrrrryyyyyyyyyyyyyy!!!!");
+        Monologue.addActor(this);
+        Monologue.addTalkList(this,talkList);
+
     }
 
     @Override

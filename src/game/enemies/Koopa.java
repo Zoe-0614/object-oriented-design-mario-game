@@ -9,15 +9,12 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.actions.AttackAction;
 import game.actions.AttackKoopaAction;
-import game.actions.DestroyShellAction;
-import game.behaviours.AttackBehaviour;
-import game.behaviours.Behaviour;
-import game.behaviours.FollowBehaviour;
 import game.enums.Status;
 import game.items.SuperMushroom;
+import game.Monologue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +28,12 @@ public abstract class Koopa extends Enemy {
      * The intrinsic attack damage of the enemy
      */
     private int damage;
+
+    /**
+     * List of monologue script
+     */
+    private ArrayList<String> talkList = new ArrayList();
+
     /**
      * Constructor.
      *
@@ -40,6 +43,12 @@ public abstract class Koopa extends Enemy {
         super(name, displayChar, hitPoints, location);
         this.addItemToInventory(new SuperMushroom());
         this.damage = 30;
+        talkList.add("Never gonna make you cry!");
+        talkList.add("Koopi koopi koopii~!");
+        Monologue.addActor(this);
+        Monologue.addTalkList(this,talkList);
+
+
     }
 
     /**

@@ -9,13 +9,25 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.PeachInteractAction;
 import game.enums.Status;
 
+import java.util.ArrayList;
+
 public class PrincessPeach extends Actor {
+
+    /**
+     * List of monologue script
+     */
+    private ArrayList<String> talkList = new ArrayList();
 
     /**
      * Constructor.
      */
     public PrincessPeach() {
         super("Princess Peach", 'P', 100);
+        talkList.add("Dear Mario, I'll be waiting for you...");
+        talkList.add("Never gonna give you up!");
+        talkList.add("Release me, or I will kick you");
+        Monologue.addActor(this);
+        Monologue.addTalkList(this,talkList);
     }
 
     @Override
@@ -35,6 +47,10 @@ public class PrincessPeach extends Actor {
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        Monologue.addTurn(this, 1);
+        if (Monologue.getTurn(this) % 2 == 0){
+            Monologue.talk(this);
+        }
         return new DoNothingAction();
     }
 }
