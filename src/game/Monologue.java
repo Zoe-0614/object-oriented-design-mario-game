@@ -42,10 +42,10 @@ public class Monologue {
     /**
      * Gets the turn of the actor
      *
-     * @param actor the NPC
-     * @return the amount of turns an NPC have
+     * @param actor the actor
+     * @return the amount of turns an actor has
      */
-    //Gets the npc's turn number
+    //Gets the actor's turn number
     public static int getTurn(Actor actor) {
         if (actors.containsKey(actor)) {
             return actors.get(actor);
@@ -59,7 +59,7 @@ public class Monologue {
      * @param actor the Actor
      * @param turn The number of turns
      */
-    //Getting the balance from the Actor and then adding the money
+    //Getting the turns from the Actor and then adding a turn
     public static void addTurn(Actor actor, int turn) {
         int currTurn;
         if (actors.containsKey(actor)) {
@@ -71,20 +71,26 @@ public class Monologue {
         actors.put(actor, newTurn);
     }
 
+    /**
+     * Maps the actor to their Monologue
+     *
+     * @param actor the Actor
+     * @param talkList the Actor's monologue
+     */
     public static void addTalkList(Actor actor, ArrayList<String> talkList){
         actorsTalkList.put(actor, talkList);
     }
 
     /**
+     * Actors and their monologue
      *
      * @param actor the Actor
      */
     public static void talk(Actor actor){
-        if (getTurn(actor) % 2 ==0){
-            ArrayList<String> newTalk = actorsTalkList.get(actor);
-            int talkIndex = random.nextInt(newTalk.size());
-            System.out.println(actor+ ": \""+newTalk.get(talkIndex)+"\"");
-        }
+        ArrayList<String> newTalk = actorsTalkList.get(actor);
+        int talkIndex = random.nextInt(newTalk.size());
+        System.out.println(actor+ ": \""+newTalk.get(talkIndex)+"\"");
+
 
 
     }

@@ -12,7 +12,7 @@ import game.enums.Status;
  * @verseion 1.0
  */
 public class FireFlower extends MagicalItem{
-    
+
     /**
      * Constructor
      */
