@@ -81,7 +81,7 @@ public class Player extends Actor implements Resettable{
 			System.out.println(this.name + " IS INVINCIBLE!");
 			invincibleTimer--;
 			Ground ground = map.locationOf(this).getGround();
-			if (!(ground.getDisplayChar() == '.' || ground.getDisplayChar() == '_')) {
+			if (!(ground.getDisplayChar() == '.' || ground.getDisplayChar() == '_' || ground.getDisplayChar() == 'C')) {
 				map.locationOf(this).setGround(new Dirt());
 				Coin coin = new Coin(5, actorLocation);
 				map.locationOf(this).addItem(coin);

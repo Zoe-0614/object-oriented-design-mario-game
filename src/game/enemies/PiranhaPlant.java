@@ -47,7 +47,7 @@ public class PiranhaPlant extends Enemy {
 
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(0, "chomps");
+        return new IntrinsicWeapon(90, "chomps");
     }
 
     @Override

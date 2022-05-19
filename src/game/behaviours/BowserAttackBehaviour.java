@@ -27,6 +27,12 @@ public class BowserAttackBehaviour implements Behaviour {
         this.direction = direction;
     }
 
+    /**
+     *
+     * @param actor the Actor acting
+     * @param map the GameMap containing the Actor
+     * @return
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         return new BowserAttackAction(target, direction);
