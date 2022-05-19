@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.actions.PeachInteractAction;
+import game.actions.FreePrincessPeachAction;
 import game.enums.Status;
 
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class PrincessPeach extends Actor {
             }
         }
         if (otherActor.hasCapability(Status.ISPLAYER) && hasKey) {
-            actions.add(new PeachInteractAction());
+            actions.add(new FreePrincessPeachAction());
         }
         return actions;
     }

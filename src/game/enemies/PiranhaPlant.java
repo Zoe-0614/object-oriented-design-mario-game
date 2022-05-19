@@ -31,6 +31,14 @@ public class PiranhaPlant extends Enemy {
         Monologue.addTalkList(this,talkList);
     }
 
+
+    /**
+     * Allowable actions of Piranha Plant.
+     * @param otherActor the Actor that might perform an action.
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return list of actions
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
@@ -44,12 +52,18 @@ public class PiranhaPlant extends Enemy {
         return actions;
     }
 
-
+    /**
+     * Creates and returns an intrinsic weapon.
+     * @return a freshly-instantiated IntrinsicWeapon
+     */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(90, "chomps");
     }
 
+    /**
+     * Reset Piranha Plant.
+     */
     @Override
     public void resetInstance() {
         this.increaseMaxHp(50);

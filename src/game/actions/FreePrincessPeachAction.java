@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
-public class PeachInteractAction extends Action {
+public class FreePrincessPeachAction extends Action {
     /**
      * Executes the end game.
      * @param actor The actor performing the action.

@@ -16,6 +16,7 @@ public class FlyingKoopa extends Koopa {
      * List of monologue script
      */
     private ArrayList<String> talkList = new ArrayList();
+
     /**
      * Constructor.
      *
