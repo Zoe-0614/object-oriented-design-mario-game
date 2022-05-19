@@ -10,10 +10,11 @@ import game.actions.BuyAction;
 import game.actions.GiveBottleAction;
 import game.actions.TalkingAction;
 import game.enums.Status;
-import game.items.Bottle;
 import game.items.PowerStar;
 import game.items.SuperMushroom;
 import game.items.Wrench;
+
+import java.util.ArrayList;
 
 /**
  * Class representing Toad
@@ -25,11 +26,21 @@ public class Toad extends Actor {
     boolean hasBottle;
 
     /**
+     * List of monologue script
+     */
+    private ArrayList<String> talkList = new ArrayList();
+
+    /**
      * Constructor
      */
     public Toad(){
         super("Toad",'O',100);
-
+        talkList.add("You might need a wrench to smash Koopa's hard shells");
+        talkList.add("You better get back to finding the Power Stars.");
+        talkList.add("The Princess is depending on you.");
+        talkList.add("Being imprisoned in these walls can drive a fungus crazy :(");
+        Monologue.addActor(this);
+        Monologue.addTalkList(this,talkList);
     }
 
     /**
@@ -75,6 +86,10 @@ public class Toad extends Actor {
      * @return actions, DoNothingAction in this case
      */
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display){
+        Monologue.addTurn(this, 1);
+        if (Monologue.getTurn(this) % 2 == 0){
+            Monologue.talk(this);
+        }
         return new DoNothingAction();
 
     }

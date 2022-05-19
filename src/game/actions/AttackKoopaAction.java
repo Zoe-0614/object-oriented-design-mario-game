@@ -11,6 +11,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.enemies.Enemy;
 import game.enums.Status;
+import game.items.Fire;
 import game.items.SuperMushroom;
 import game.items.Wrench;
 
@@ -65,7 +66,10 @@ public class AttackKoopaAction extends Action {
             if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
                 return actor + " misses " + target + ".";
             }
-
+            if (actor.hasCapability(Status.FIRE_ATTACK)){
+                map.locationOf(target).addItem(new Fire());
+//                System.out.println("FIRE ATTACK HIT!");
+            }
             if (actor.hasCapability(Status.INVINCIBLE)) {
                 result += actor + " instantly kills " + target;
                 result += System.lineSeparator() + new DestroyShellAction(target, map, direction).execute(target, map);
@@ -93,8 +97,11 @@ public class AttackKoopaAction extends Action {
     @Override
     public String menuDescription(Actor actor) {
         if (target.isConscious()) {
+            if (actor.hasCapability(Status.FIRE_ATTACK)){
+                return actor + " attacks " + target + " at " + direction + " with fire";
+            }
             return actor + " attacks " + target + " at " + direction;
         }
-        return actor + " destroys " + target +" (Dormant)";
+        return actor + " destroys " + target + " (Dormant)";
     }
 }

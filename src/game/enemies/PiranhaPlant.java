@@ -8,8 +8,16 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.enums.Status;
+import game.Monologue;
+
+import java.util.ArrayList;
 
 public class PiranhaPlant extends Enemy {
+    /**
+     * List of monologue script
+     */
+    private ArrayList<String> talkList = new ArrayList();
+
     /**
      * Constructor.
      * @param location    the Enemy's location
@@ -17,6 +25,10 @@ public class PiranhaPlant extends Enemy {
     public PiranhaPlant(Location location) {
         super("Piranha Plant", 'Y', 150, location);
         getBehaviours().clear();
+        talkList.add("Slsstssthshs~! (Never gonna say goodbye~)");
+        talkList.add("Ohmnom nom nom nom.");
+        Monologue.addActor(this);
+        Monologue.addTalkList(this,talkList);
     }
 
     @Override
@@ -32,6 +44,7 @@ public class PiranhaPlant extends Enemy {
         return actions;
     }
 
+
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(90, "chomps");
@@ -42,4 +55,6 @@ public class PiranhaPlant extends Enemy {
         this.increaseMaxHp(50);
         this.heal(this.getMaxHp());
     }
+
+
 }

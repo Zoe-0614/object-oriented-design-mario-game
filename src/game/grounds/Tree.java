@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.capabilities.JumpCapable;
 import game.capabilities.SpawnCapable;
 import game.enums.Status;
+import game.items.FireFlower;
 import game.reset.Resettable;
 
 import java.util.Random;
@@ -69,11 +70,20 @@ abstract public class Tree extends Ground implements JumpCapable, Resettable, Sp
 
         if (age == 10){
             location.setGround(new Sapling());
+            Random random = new Random();
+            int prob = random.nextInt(2);
+            if (prob < 1){
+                location.addItem(new FireFlower());
+            }
 
         }
         else if (age == 20){
             location.setGround(new Mature());
-
+            Random random = new Random();
+            int prob = random.nextInt(2);
+            if (prob < 1){
+                location.addItem(new FireFlower());
+            }
         }
         //After every tick, drop goomba, koopa etc
         if (age > 0) {

@@ -7,8 +7,10 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.enums.Status;
+import game.items.Fire;
 
 /**
  * Special Action for attacking other Actors.
@@ -60,6 +62,10 @@ public class AttackAction extends Action {
 
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
 			return actor + " misses " + target + ".";
+		}
+		if (actor.hasCapability(Status.FIRE_ATTACK)){
+			map.locationOf(target).addItem(new Fire());
+//			System.out.println("FIRE ATTACK HIT!");
 		}
 
 		result += attack(actor);
@@ -113,6 +119,9 @@ public class AttackAction extends Action {
 	 */
 	@Override
 	public String menuDescription(Actor actor) {
+		if (actor.hasCapability(Status.FIRE_ATTACK)){
+			return actor + " attacks " + target + " at " + direction + " with fire";
+		}
 		return actor + " attacks " + target + " at " + direction;
 	}
 }

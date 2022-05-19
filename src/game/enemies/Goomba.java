@@ -2,7 +2,6 @@ package game.enemies;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -10,10 +9,10 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
 import game.actions.SuicideAction;
-import game.enemies.Enemy;
 import game.enums.Status;
-import game.items.Coin;
+import game.Monologue;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -27,6 +26,12 @@ public class Goomba extends Enemy {
      * The intrinsic attack damage of the enemy
      */
     private int damage;
+
+    /**
+     * List of monologue script
+     */
+    private ArrayList<String> talkList = new ArrayList();
+
     /**
      * Constructor.
      *
@@ -35,6 +40,12 @@ public class Goomba extends Enemy {
     public Goomba(Location location) {
         super("Goomba", 'g', 20, location);
         this.damage = 10;
+        talkList.add("Mugga mugga!");
+        talkList.add("Ugha ugha...(Never gonna run around and desert you...)");
+        talkList.add("Ooga-Chaka Ooga-Ooga!");
+        Monologue.addActor(this);
+        Monologue.addTalkList(this,talkList);
+
     }
 
 
@@ -55,7 +66,7 @@ public class Goomba extends Enemy {
             this.addCapability(Status.ENGAGED);
         }
 
-        super.allowableActions(otherActor, direction, map);
+        actions.add(super.allowableActions(otherActor, direction, map));
         return actions;
     }
 
