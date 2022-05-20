@@ -36,7 +36,7 @@ public class Bowser extends Enemy{
         talkList.add("Wrrrrrrrrrrrrrrrryyyyyyyyyyyyyy!!!!");
         Monologue.addActor(this);
         Monologue.addTalkList(this,talkList);
-
+        addCapability(Status.FIRE_ATTACK);
     }
 
     /**
