@@ -13,6 +13,7 @@ import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.enums.Status;
+import game.Monologue;
 import game.reset.Resettable;
 
 import java.util.Map;
@@ -68,7 +69,6 @@ public abstract class Enemy extends Actor implements Resettable{
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-
         if (this.hasCapability(Status.ENGAGED) && otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) &&
                 map.locationOf(otherActor).getGround().getDisplayChar() != '_') {
             behaviours.put(9, new AttackBehaviour(otherActor, direction));
@@ -93,10 +93,15 @@ public abstract class Enemy extends Actor implements Resettable{
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        Monologue.addTurn(this, 1);
+        if (Monologue.getTurn(this) % 2 == 0){
+            Monologue.talk(this);
+        }
         for (Behaviour Behaviour : behaviours.values()) {
             Action action = Behaviour.getAction(this, map);
-            if (action != null)
+            if (action != null) {
                 return action;
+            }
         }
         return new DoNothingAction();
     }

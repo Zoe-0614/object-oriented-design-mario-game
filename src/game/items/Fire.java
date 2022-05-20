@@ -15,6 +15,10 @@ public class Fire extends Item {
         this.turns = 3;
     }
 
+    /**
+     * Inform Fire of the passage of time.
+     * @param currentLocation The location of the ground on which we lie.
+     */
     @Override
     public void tick(Location currentLocation) {
         super.tick(currentLocation);

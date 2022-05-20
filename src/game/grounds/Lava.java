@@ -14,6 +14,11 @@ public class Lava extends Ground {
         super('L');
     }
 
+    /**
+     * Checks if the actor enter can enter lava.
+     * @param actor the Actor to check
+     * @return a boolean which indicates whether the actor can enter lava
+     */
     @Override
     public boolean canActorEnter(Actor actor) {
         if (actor.getDisplayChar() != 'm' && actor.getDisplayChar() != 'M') {
@@ -22,6 +27,10 @@ public class Lava extends Ground {
         return true;
     }
 
+    /**
+     * Passes a turn for lava which deals damage to actors standing on it.
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         Actor actor = location.getActor();
