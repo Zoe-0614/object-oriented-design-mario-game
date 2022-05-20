@@ -9,7 +9,7 @@ import game.enums.Status;
  * Class representing a Fire Flower
  *
  * @author Loh Zhun Guan
- * @verseion 1.0
+ * @version 1.0
  */
 public class FireFlower extends MagicalItem{
 
