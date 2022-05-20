@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
-import game.behaviours.BowserAttackBehaviour;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.FollowBehaviour;
 import game.enums.Status;
 import game.items.Key;
@@ -55,7 +55,7 @@ public class Bowser extends Enemy{
         }
         if (this.hasCapability(Status.ENGAGED) && otherActor.hasCapability(Status.HOSTILE_TO_ENEMY) &&
                 map.locationOf(otherActor).getGround().getDisplayChar() != '_') {
-            addBehaviours(9, new BowserAttackBehaviour(otherActor, direction));
+            addBehaviours(9, new AttackBehaviour(otherActor, direction));
             addBehaviours(8, new FollowBehaviour(otherActor));
         }
         return actions;
