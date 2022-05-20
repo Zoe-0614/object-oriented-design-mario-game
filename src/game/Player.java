@@ -100,7 +100,7 @@ public class Player extends Actor implements Resettable{
 			}
 			System.out.println(this.name + " has FIRE ATTACK!");
 			fireAttackTimer --;
-			System.out.println("Fire attack timer:" +fireAttackTimer);
+//			System.out.println("Fire attack timer:" +fireAttackTimer);
 		}
 		if (fireAttackTimer == 0){
 			this.removeCapability(Status.FIRE_ATTACK);
