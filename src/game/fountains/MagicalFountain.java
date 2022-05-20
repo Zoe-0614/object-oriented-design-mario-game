@@ -52,7 +52,7 @@ public abstract class MagicalFountain extends Ground {
                 actionList.add(new RefillAction(this));
             }
             else{
-                new ConsumeWaterAction(this.getWater()).execute(actor, location.map());
+                System.out.println(new ConsumeWaterAction(this.getWater()).execute(actor, location.map()));
             }
         }
 
